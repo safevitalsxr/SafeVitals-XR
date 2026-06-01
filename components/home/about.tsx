@@ -8,7 +8,7 @@ export function AboutSection() {
           <h2 className="font-heading text-4xl mb-12 text-text">About Us</h2>
           
           <div className="font-sans text-2xl text-text-secondary leading-relaxed mb-24">
-            SafeVitals XR maps the human system into an immersive visual layer, allowing critical care teams to perceive data intuitively, reduce cognitive load, and make faster, more accurate decisions.
+            SafeVitals XR is a healthcare intelligence platform that connects existing hospital monitoring systems through the SafeVitals Bridge, enabling real-time patient monitoring, cloud analytics, mobile access, and immersive XR visualization.
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 border-t border-border/50 pt-16">

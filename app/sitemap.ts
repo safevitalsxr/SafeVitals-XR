@@ -1,38 +1,27 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://safevitals.in";
-
   return [
     {
-      url: baseUrl,
+      url: "https://safevitals.in",
       lastModified: new Date(),
-      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/platform`,
+      url: "https://safevitals.in/platform",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
     },
     {
-      url: `${baseUrl}/about`,
+      url: "https://safevitals.in/about",
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: "https://safevitals.in/contact",
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
     },
     {
-      url: `${baseUrl}/reserve`,
+      url: "https://safevitals.in/reserve",
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
     },
   ];
 }

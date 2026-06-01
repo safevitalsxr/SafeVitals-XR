@@ -24,40 +24,35 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "SafeVitals XR | Real-Time Healthcare Intelligence",
+    default: "SafeVitals XR",
     template: "%s | SafeVitals XR",
   },
   description:
-    "SafeVitals XR connects existing hospital monitoring systems and transforms patient monitoring into immersive clinical intelligence through XR, cloud, and real-time analytics.",
+    "SafeVitals XR transforms patient monitoring into immersive healthcare intelligence through SafeVitals Bridge, cloud infrastructure, medical dashboards, mobile applications, and XR visualization.",
   keywords: [
     "SafeVitals",
     "SafeVitals XR",
-    "safe vitals",
-    "healthcare XR",
-    "hospital monitoring",
-    "ICU monitoring",
-    "medical dashboard",
-    "patient monitoring XR",
-    "hospital cloud monitoring",
-    "digital twin healthcare",
-    "clinical intelligence",
-    "real-time patient monitoring",
+    "Safe Vitals",
+    "Hospital Monitoring",
+    "ICU Monitoring",
+    "Patient Monitoring",
+    "Healthcare XR",
+    "Medical Dashboard",
+    "SafeVitals Bridge",
+    "Healthcare Intelligence",
   ],
   metadataBase: new URL("https://safevitals.in"),
   openGraph: {
-    title: "SafeVitals XR | Real-Time Healthcare Intelligence",
-    description:
-      "SafeVitals XR connects existing hospital monitoring systems and transforms patient monitoring into immersive clinical intelligence through XR, cloud, and real-time analytics.",
+    title: "SafeVitals XR",
+    description: "Real-Time Healthcare Intelligence in XR",
     url: "https://safevitals.in",
     siteName: "SafeVitals XR",
     type: "website",
-    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SafeVitals XR | Real-Time Healthcare Intelligence",
-    description:
-      "Real-Time Healthcare Intelligence in XR. Transform ICU monitoring through immersive visualization, digital twins, and AI-powered analytics.",
+    title: "SafeVitals XR",
+    description: "Real-Time Healthcare Intelligence in XR",
   },
   robots: {
     index: true,
@@ -81,10 +76,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "SafeVitals XR",
   url: "https://safevitals.in",
-  logo: "https://safevitals.in/logo.png",
-  description:
-    "Real-Time Healthcare Intelligence in XR. SafeVitals connects existing hospital monitoring systems and transforms patient monitoring into immersive clinical intelligence.",
-  sameAs: [],
+  description: "Real-Time Healthcare Intelligence in XR",
 };
 
 export default function RootLayout({
