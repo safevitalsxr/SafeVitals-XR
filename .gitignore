@@ -7,3 +7,8 @@ dev-server.log
 dev-server.err.log
 *.zip
 
+# Cloudflare CDN Migrated Assets
+/public/hero-xr
+/public/bridge-scroll
+/public/hero
+/public/hero-bridge

@@ -10,10 +10,11 @@ if (typeof window !== "undefined") {
 
 const TOTAL_FRAMES = 25;
 const PRELOAD_FRAMES = true;
+const R2_BUCKET_URL = "https://pub-731a48c3160243f6a21049d8bb21b75b.r2.dev";
 
 const getFramePath = (index: number) => {
   const paddedIndex = String(index).padStart(3, "0");
-  return `/bridge-scroll/ezgif-frame-${paddedIndex}.png`;
+  return `${R2_BUCKET_URL}/bridge-scroll/ezgif-frame-${paddedIndex}.png`;
 };
 
 export function BridgeScrollFullscreen() {
