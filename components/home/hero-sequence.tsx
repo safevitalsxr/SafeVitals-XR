@@ -176,9 +176,9 @@ export function HeroSequence() {
     // text1: Frames 1-20
     tl.to(text1Ref.current, { autoAlpha: 0, x: -40, duration: 0.15 }, 15 / 100);
     
-    // text2: Frames 21-80 (Beyond Traditional Monitoring) - remains fixed & visible
+    // text2: Frames 21-38 (Beyond Traditional Monitoring)
     tl.fromTo(text2Ref.current, { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.1 }, 20 / 100);
-    tl.to(text2Ref.current, { autoAlpha: 0, x: 40, duration: 0.1 }, 80 / 100);
+    tl.to(text2Ref.current, { autoAlpha: 0, x: 40, duration: 0.08 }, 35 / 100);
 
     // Vitals HUD Card animation:
     // 1. Appears floating beside the heart (frame 20 to 40)

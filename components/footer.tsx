@@ -1,3 +1,4 @@
+
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-24">
@@ -5,12 +6,13 @@ export function Footer() {
         <div className="flex flex-col gap-4">
           <span className="font-heading text-lg font-medium text-text mb-2">SafeVitals XR</span>
           <p>Immersive healthcare monitoring.</p>
+          <p>Under the Incubation of <b>Ratan Tata Innovation Hub (RTIH)</b></p>
         </div>
-        
+
         <div className="flex flex-col gap-4">
           <span className="font-mono text-accent mb-2 uppercase tracking-widest text-xs">Contact</span>
-          <a href="mailto:hello@safevitals XR" className="hover:text-text transition-colors">hello@safevitalsxr.com</a>
-          <a href="tel:+18005551234" className="hover:text-text transition-colors">+1 (800) 555-1234</a>
+          <a href="mailto:safevitals.xr@gmail.com" className="hover:text-text transition-colors">safevitals.xr@gmail.com</a>
+          <a href="tel:+919989359799" className="hover:text-text transition-colors">+91 9989359799</a>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -21,7 +23,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-4">
           <span className="font-mono text-accent mb-2 uppercase tracking-widest text-xs">Location</span>
-          <p>100 Clinical Way<br/>San Francisco, CA 94105</p>
+          <p>RTIH <br />Vijayawada, AP 521108</p>
         </div>
       </div>
     </footer>

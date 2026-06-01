@@ -162,6 +162,7 @@ export function PlatformStorytelling() {
         start: "top top",
         end: "bottom bottom",
         scrub: 1,
+        refreshPriority: -10,
       },
     });
 
@@ -183,7 +184,12 @@ export function PlatformStorytelling() {
         },
         at,
       );
-      tl.to(content, { autoAlpha: 1, duration: 0.08 }, at + 0.03);
+      tl.fromTo(
+        content,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.08 },
+        at + 0.03,
+      );
     };
 
     // ═══ Phase 1: Ghost Dashboard Materializes (0%–10%) ═══
@@ -291,7 +297,9 @@ export function PlatformStorytelling() {
         document.head.removeChild(styleEl);
       }
       ScrollTrigger.getAll().forEach((t) => {
-        if (t.vars.trigger === container) t.kill();
+        if (t && t.vars && t.vars.trigger === container) {
+          t.kill();
+        }
       });
     };
   }, []);
