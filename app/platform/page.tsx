@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import { BrainCircuit, Cloud, Cpu, Eye, HeartPulse } from "lucide-react";
 import { XrVisual } from "@/components/xr-visual";
+
+export const metadata: Metadata = {
+  title: "Platform",
+  description:
+    "Explore the SafeVitals XR platform architecture — Bridge hardware connector, cloud analytics, XR dashboard, digital twins, and AI-powered clinical intelligence for hospitals.",
+  openGraph: {
+    title: "SafeVitals XR Platform Architecture",
+    description:
+      "A clinical intelligence stack: bridge connectors, cloud layer, XR dashboard, digital twins, and AI triage — all in one immersive interface.",
+    url: "https://safevitals.in/platform",
+  },
+  alternates: {
+    canonical: "https://safevitals.in/platform",
+  },
+};
 
 const layers = [
   {

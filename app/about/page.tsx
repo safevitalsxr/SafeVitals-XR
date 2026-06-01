@@ -1,3 +1,20 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about SafeVitals XR — our mission to transform critical-care monitoring into immersive clinical intelligence using XR, digital twins, and AI-powered analytics.",
+  openGraph: {
+    title: "About SafeVitals XR",
+    description:
+      "Our mission: make critical-care data understandable at a glance through immersive spatial visualization.",
+    url: "https://safevitals.in/about",
+  },
+  alternates: {
+    canonical: "https://safevitals.in/about",
+  },
+};
+
 const roadmap = ["Hospital Integration", "Cloud Diagnostics", "AI Prediction Models", "Global Accessibility"];
 
 export default function AboutPage() {

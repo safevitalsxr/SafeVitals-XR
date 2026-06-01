@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import { ShieldCheck } from "lucide-react";
 import { ReserveForm } from "@/components/reserve-form";
+
+export const metadata: Metadata = {
+  title: "Reserve Demo",
+  description:
+    "Reserve a SafeVitals XR demo for your hospital. Designed for clinical leaders, innovation teams, and hospital executives exploring XR-powered patient monitoring.",
+  openGraph: {
+    title: "Reserve a SafeVitals XR Demo",
+    description:
+      "See how SafeVitals XR fits your hospital pilot. Demo designed for clinical leaders and hospital innovation teams.",
+    url: "https://safevitals.in/reserve",
+  },
+  alternates: {
+    canonical: "https://safevitals.in/reserve",
+  },
+};
 
 export default function ReservePage() {
   return (

@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { ReserveForm } from "@/components/reserve-form";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with SafeVitals XR. Start a clinical XR conversation about hospital monitoring, ICU visualization, and healthcare innovation pilots.",
+  openGraph: {
+    title: "Contact SafeVitals XR",
+    description:
+      "Start a clinical XR conversation. Reach out for hospital pilots, partnerships, and innovation collaborations.",
+    url: "https://safevitals.in/contact",
+  },
+  alternates: {
+    canonical: "https://safevitals.in/contact",
+  },
+};
 
 export default function ContactPage() {
   return (
