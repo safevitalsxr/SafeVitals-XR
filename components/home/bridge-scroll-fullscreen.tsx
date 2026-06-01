@@ -39,6 +39,7 @@ export function BridgeScrollFullscreen() {
     
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
       const img = new Image();
+      img.crossOrigin = "anonymous";
       img.src = getFramePath(i);
       img.onload = () => {
         loadedCount++;
