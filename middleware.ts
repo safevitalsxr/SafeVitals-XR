@@ -46,7 +46,6 @@ export function middleware(request: NextRequest) {
 
   // 4. Device detection & redirection logic:
   // Detect mobile user agents (excluding tablets like iPad or Android tablets)
-  // Tablets contain "Android" but not "Mobile", or "iPad" / "Macintosh" (modern iPads).
   const isMobileUA = /iphone|ipod|android.*mobile|windows phone|blackberry|opera mini|iemobile/i.test(userAgent);
 
   // If mobile user visits desktop site, has not set desktop cookie, and didn't pass ?desktop=true
