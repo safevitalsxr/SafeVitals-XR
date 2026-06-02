@@ -61,6 +61,8 @@ export function CloudScene({ scrollProgress }: SceneProps) {
           {/* Animated data packet dots traveling along coordinates */}
           {/* Node 1 to Central */}
           <motion.circle
+            cx={40}
+            cy={50}
             r="2"
             fill="#00D4FF"
             animate={{ cx: [40, 100], cy: [50, 100], opacity: [0, 1, 0] }}
@@ -68,6 +70,8 @@ export function CloudScene({ scrollProgress }: SceneProps) {
           />
           {/* Node 2 to Central */}
           <motion.circle
+            cx={160}
+            cy={50}
             r="2"
             fill="#F43F5E"
             animate={{ cx: [160, 100], cy: [50, 100], opacity: [0, 1, 0] }}
@@ -75,6 +79,8 @@ export function CloudScene({ scrollProgress }: SceneProps) {
           />
           {/* Central to Node 3 */}
           <motion.circle
+            cx={100}
+            cy={100}
             r="2"
             fill="#10B981"
             animate={{ cx: [100, 40], cy: [100, 150], opacity: [0, 1, 0] }}

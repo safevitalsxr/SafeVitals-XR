@@ -31,15 +31,17 @@ export default function Home() {
 
   return (
     <main className="bg-background text-text">
-      {mounted ? (
-        <>
-          <HeroSequence />
-          <BridgeScrollFullscreen />
-          <PlatformStorytelling />
-        </>
-      ) : (
-        <div className="h-screen bg-black w-full" />
-      )}
+      <div className="relative">
+        {mounted ? (
+          <>
+            <HeroSequence />
+            <BridgeScrollFullscreen />
+            <PlatformStorytelling />
+          </>
+        ) : (
+          <div className="h-screen bg-black w-full" />
+        )}
+      </div>
       <ProblemSection />
       <AboutSection />
       <PricingSection />
