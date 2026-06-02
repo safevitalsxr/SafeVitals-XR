@@ -20,9 +20,13 @@ export function PatientScene({ scrollProgress }: SceneProps) {
   // Copy transitions (perfect handover, no dead zones)
   const text1Opacity = useTransform(scrollProgress, [0.08, 0.12, 0.18, 0.20], [0, 1, 1, 0]);
   const text1Y = useTransform(scrollProgress, [0.08, 0.12, 0.18, 0.20], [15, 0, 0, -15]);
+  const text1Scale = useTransform(scrollProgress, [0.08, 0.12, 0.18, 0.20], [0.92, 1, 1, 1.05]);
+  const text1Filter = useTransform(scrollProgress, [0.08, 0.12, 0.18, 0.20], ["blur(8px)", "blur(0px)", "blur(0px)", "blur(8px)"]);
 
   const text2Opacity = useTransform(scrollProgress, [0.18, 0.20, 0.24, 0.28], [0, 1, 1, 0]);
   const text2Y = useTransform(scrollProgress, [0.18, 0.20, 0.24, 0.28], [15, 0, 0, -15]);
+  const text2Scale = useTransform(scrollProgress, [0.18, 0.20, 0.24, 0.28], [0.92, 1, 1, 1.05]);
+  const text2Filter = useTransform(scrollProgress, [0.18, 0.20, 0.24, 0.28], ["blur(8px)", "blur(0px)", "blur(0px)", "blur(8px)"]);
 
   const bodyY = useTransform(scrollProgress, [0.12, 0.28], [15, -15]);
 
@@ -34,14 +38,14 @@ export function PatientScene({ scrollProgress }: SceneProps) {
       {/* Top Narrative Copy */}
       <div className="relative w-full h-20 flex items-center justify-center text-center">
         <motion.p
-          style={{ opacity: text1Opacity, y: text1Y }}
+          style={{ opacity: text1Opacity, y: text1Y, scale: text1Scale, filter: text1Filter }}
           className="absolute font-sans text-lg sm:text-xl font-light text-white/90 max-w-xs leading-relaxed"
         >
           Every patient is generating data.
         </motion.p>
 
         <motion.p
-          style={{ opacity: text2Opacity, y: text2Y }}
+          style={{ opacity: text2Opacity, y: text2Y, scale: text2Scale, filter: text2Filter }}
           className="absolute font-sans text-lg sm:text-xl font-light text-[#FF8A8A] max-w-xs leading-relaxed"
         >
           But hospitals only see numbers.

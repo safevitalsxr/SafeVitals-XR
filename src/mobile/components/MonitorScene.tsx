@@ -17,6 +17,8 @@ export function MonitorScene({ scrollProgress }: SceneProps) {
   // Headline opacity - stays active throughout the scene visibility peak
   const textOpacity = useTransform(scrollProgress, [0.24, 0.28, 0.38, 0.42], [0, 1, 1, 0]);
   const textY = useTransform(scrollProgress, [0.24, 0.28, 0.38, 0.42], [15, 0, 0, -15]);
+  const textScale = useTransform(scrollProgress, [0.24, 0.28, 0.38, 0.42], [0.92, 1, 1, 1.05]);
+  const textFilter = useTransform(scrollProgress, [0.24, 0.28, 0.38, 0.42], ["blur(8px)", "blur(0px)", "blur(0px)", "blur(8px)"]);
 
   return (
     <motion.div
@@ -26,7 +28,7 @@ export function MonitorScene({ scrollProgress }: SceneProps) {
       {/* Narrative Headline */}
       <div className="text-center h-16 flex items-center justify-center">
         <motion.p
-          style={{ opacity: textOpacity, y: textY }}
+          style={{ opacity: textOpacity, y: textY, scale: textScale, filter: textFilter }}
           className="font-sans text-base sm:text-lg font-light text-white/80 max-w-xs leading-relaxed"
         >
           Existing monitoring systems were never built for immersive care.

@@ -11,10 +11,11 @@ export function HeroScene({ scrollProgress }: SceneProps) {
   const opacity = useTransform(scrollProgress, [0.0, 0.08, 0.12], [1, 1, 0]);
   const scale = useTransform(scrollProgress, [0.0, 0.12], [1, 0.95]);
   const y = useTransform(scrollProgress, [0.0, 0.12], [0, -30]);
+  const filter = useTransform(scrollProgress, [0.0, 0.08, 0.12], ["blur(0px)", "blur(0px)", "blur(12px)"]);
 
   return (
     <motion.div
-      style={{ opacity, scale, y }}
+      style={{ opacity, scale, y, filter }}
       className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-transparent px-6 z-40 overflow-hidden pointer-events-none"
     >
       {/* Dynamic Telemetry Cyber Grid Backdrop */}

@@ -23,10 +23,14 @@ export function BridgeScene({ scrollProgress }: SceneProps) {
   // Text 1: Reveal the Bridge product
   const text1Opacity = useTransform(scrollProgress, [0.38, 0.42, 0.47, 0.49], [0, 1, 1, 0]);
   const text1Y = useTransform(scrollProgress, [0.38, 0.42, 0.47, 0.49], [15, 0, 0, -15]);
+  const text1Scale = useTransform(scrollProgress, [0.38, 0.42, 0.47, 0.49], [0.92, 1, 1, 1.05]);
+  const text1Filter = useTransform(scrollProgress, [0.38, 0.42, 0.47, 0.49], ["blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]);
 
   // Text 2: Transmit data stats
   const text2Opacity = useTransform(scrollProgress, [0.47, 0.49, 0.52, 0.56], [0, 1, 1, 0]);
   const text2Y = useTransform(scrollProgress, [0.47, 0.49, 0.52, 0.56], [15, 0, 0, -15]);
+  const text2Scale = useTransform(scrollProgress, [0.47, 0.49, 0.52, 0.56], [0.92, 1, 1, 1.05]);
+  const text2Filter = useTransform(scrollProgress, [0.47, 0.49, 0.52, 0.56], ["blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]);
 
   // Data transmission particles opacity (emitted upwards starting at 0.42)
   const streamOpacity = useTransform(scrollProgress, [0.42, 0.46, 0.54], [0, 1, 0]);
@@ -40,7 +44,7 @@ export function BridgeScene({ scrollProgress }: SceneProps) {
       <div className="relative w-full h-24 flex items-center justify-center text-center">
         {/* Text 1: Introducing */}
         <motion.div
-          style={{ opacity: text1Opacity, y: text1Y }}
+          style={{ opacity: text1Opacity, y: text1Y, scale: text1Scale, filter: text1Filter }}
           className="absolute space-y-2 max-w-xs"
         >
           <p className="font-mono text-[9px] tracking-[0.25em] text-[#00D4FF] uppercase font-bold">
@@ -56,7 +60,7 @@ export function BridgeScene({ scrollProgress }: SceneProps) {
 
         {/* Text 2: Transmit */}
         <motion.div
-          style={{ opacity: text2Opacity, y: text2Y }}
+          style={{ opacity: text2Opacity, y: text2Y, scale: text2Scale, filter: text2Filter }}
           className="absolute space-y-2 max-w-xs"
         >
           <p className="font-mono text-[9px] tracking-[0.25em] text-blue-400 uppercase font-bold">

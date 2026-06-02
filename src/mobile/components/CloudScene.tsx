@@ -19,6 +19,8 @@ export function CloudScene({ scrollProgress }: SceneProps) {
   // Headline animation - active throughout the scene's visibility
   const textOpacity = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [0, 1, 1, 0]);
   const textY = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [15, 0, 0, -15]);
+  const textScale = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [0.92, 1, 1, 1.05]);
+  const textFilter = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], ["blur(8px)", "blur(0px)", "blur(0px)", "blur(8px)"]);
 
   return (
     <motion.div
@@ -27,7 +29,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
     >
       {/* Narrative Header */}
       <div className="text-center h-16 flex items-center justify-center">
-        <motion.div style={{ opacity: textOpacity, y: textY }} className="space-y-1">
+        <motion.div style={{ opacity: textOpacity, y: textY, scale: textScale, filter: textFilter }} className="space-y-1">
           <h2 className="font-heading text-lg font-extrabold text-white tracking-tight">
             One Infrastructure.
           </h2>

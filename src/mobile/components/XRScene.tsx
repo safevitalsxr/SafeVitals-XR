@@ -20,10 +20,14 @@ export function XRScene({ scrollProgress }: SceneProps) {
   // Text 1: "See beyond numbers."
   const text1Opacity = useTransform(scrollProgress, [0.78, 0.82, 0.85, 0.87], [0, 1, 1, 0]);
   const text1Y = useTransform(scrollProgress, [0.78, 0.82, 0.85, 0.87], [15, 0, 0, -15]);
+  const text1Scale = useTransform(scrollProgress, [0.78, 0.82, 0.85, 0.87], [0.92, 1, 1, 1.05]);
+  const text1Filter = useTransform(scrollProgress, [0.78, 0.82, 0.85, 0.87], ["blur(8px)", "blur(0px)", "blur(0px)", "blur(8px)"]);
 
   // Text 2: "See the patient."
   const text2Opacity = useTransform(scrollProgress, [0.85, 0.87, 0.88, 0.92], [0, 1, 1, 0]);
   const text2Y = useTransform(scrollProgress, [0.85, 0.87, 0.88, 0.92], [15, 0, 0, -15]);
+  const text2Scale = useTransform(scrollProgress, [0.85, 0.87, 0.88, 0.92], [0.92, 1, 1, 1.05]);
+  const text2Filter = useTransform(scrollProgress, [0.85, 0.87, 0.88, 0.92], ["blur(8px)", "blur(0px)", "blur(0px)", "blur(8px)"]);
 
   return (
     <motion.div
@@ -42,7 +46,7 @@ export function XRScene({ scrollProgress }: SceneProps) {
       <div className="relative w-full h-20 flex items-center justify-center text-center">
         {/* Text 1 */}
         <motion.div
-          style={{ opacity: text1Opacity, y: text1Y }}
+          style={{ opacity: text1Opacity, y: text1Y, scale: text1Scale, filter: text1Filter }}
           className="absolute space-y-1 max-w-xs"
         >
           <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-none">
@@ -55,7 +59,7 @@ export function XRScene({ scrollProgress }: SceneProps) {
 
         {/* Text 2 */}
         <motion.div
-          style={{ opacity: text2Opacity, y: text2Y }}
+          style={{ opacity: text2Opacity, y: text2Y, scale: text2Scale, filter: text2Filter }}
           className="absolute space-y-1 max-w-xs"
         >
           <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-[#00D4FF] tracking-tight leading-none">
