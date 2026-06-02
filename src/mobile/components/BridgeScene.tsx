@@ -121,7 +121,7 @@ export function BridgeScene({ scrollProgress }: SceneProps) {
         {/* 3D Hardware Bezel */}
         <motion.div
           style={{ y: bridgeY, rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="relative w-48 h-48 rounded-[36px] bg-gradient-to-b from-[#141d33] to-[#040811] p-0.5 shadow-[0_35px_80px_rgba(0,0,0,0.9)] border border-slate-700/80"
+          className="relative w-48 h-48 rounded-[36px] bg-white/[0.02] border border-white/10 backdrop-blur-xl p-0.5 shadow-[0_35px_80px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.12)]"
         >
           {/* Edge LED neon accent track */}
           <div className="absolute inset-1.5 rounded-[30px] border border-cyan-500/10 shadow-[inset_0_0_20px_rgba(0,212,255,0.06)] pointer-events-none" />

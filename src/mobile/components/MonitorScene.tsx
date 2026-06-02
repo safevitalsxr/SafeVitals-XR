@@ -34,7 +34,7 @@ export function MonitorScene({ scrollProgress }: SceneProps) {
       </div>
 
       {/* Bedside ICU Monitor Bezel */}
-      <div className="relative w-full max-w-[320px] mx-auto aspect-[4/3] rounded-2xl bg-[#090d16] border-4 border-slate-800 p-2.5 shadow-[0_25px_50px_rgba(0,0,0,0.8)] border-t-slate-700 border-b-slate-900 flex flex-col justify-between overflow-hidden">
+      <div className="relative w-full max-w-[320px] mx-auto aspect-[4/3] rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl p-2.5 shadow-[0_25px_60px_rgba(0,0,0,0.65),inset_0_1px_1px_rgba(255,255,255,0.12)] flex flex-col justify-between overflow-hidden">
         {/* Anti-glare layer reflection sheen */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.015] to-white/[0.045] pointer-events-none z-20" />
 

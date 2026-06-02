@@ -48,14 +48,14 @@ export function HeroScene({ scrollProgress }: SceneProps) {
       </div>
 
       {/* Center Storytelling Card */}
-      <div className="text-center space-y-7 max-w-xs z-10 relative">
+      <div className="text-center space-y-6 w-full max-w-[310px] z-10 relative rounded-[32px] bg-white/[0.02] border border-white/10 p-7 backdrop-blur-xl shadow-[0_25px_60px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.12)]">
         {/* Massive Luxury Titanium Typography */}
-        <h1 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-[0.22em] uppercase leading-none select-none bg-clip-text text-transparent bg-gradient-to-b from-[#F9FAFB] via-[#E2E8F0] to-[#94A3B8]">
+        <h1 className="font-heading text-3xl sm:text-4xl font-extrabold tracking-[0.22em] uppercase leading-none select-none bg-clip-text text-transparent bg-gradient-to-b from-[#F9FAFB] via-[#E2E8F0] to-[#94A3B8]">
           SafeVitals <span className="text-[#00D4FF] drop-shadow-[0_0_15px_rgba(0,212,255,0.4)]">XR</span>
         </h1>
 
         {/* Custom Telemetry ECG Wave Widget */}
-        <div className="h-8 w-44 mx-auto overflow-hidden relative opacity-70 bg-[#0A1221]/20 border border-white/5 rounded-full flex items-center px-4 shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
+        <div className="h-8 w-40 mx-auto overflow-hidden relative opacity-70 bg-white/[0.02] border border-white/10 rounded-full flex items-center px-4 shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
           <div className="w-[200%] h-full flex items-center absolute left-0 top-0 animate-ecg-scroll">
             <svg className="w-full h-full" viewBox="0 0 200 100" preserveAspectRatio="none">
               <path
@@ -72,7 +72,7 @@ export function HeroScene({ scrollProgress }: SceneProps) {
         </div>
 
         {/* Minimal Subtitle */}
-        <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-white/45 font-semibold leading-relaxed pl-1 select-none">
+        <p className="font-mono text-[8px] tracking-[0.25em] uppercase text-white/45 font-semibold leading-relaxed pl-0.5 select-none">
           Real-Time Healthcare Intelligence
         </p>
       </div>

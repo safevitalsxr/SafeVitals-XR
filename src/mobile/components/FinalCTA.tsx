@@ -82,7 +82,7 @@ export function FinalCTA({ scrollProgress }: SceneProps) {
 
 
       {/* Interactive CRM Form Card */}
-      <div className="w-full max-w-[360px] mx-auto rounded-2xl bg-[#0A1221]/30 border border-white/5 p-5 backdrop-blur-md shadow-[0_15px_30px_rgba(0,0,0,0.5)] my-6">
+      <div className="w-full max-w-[360px] mx-auto rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl p-5 shadow-[0_25px_60px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.12)] my-6">
         <div className="text-center text-[9px] font-mono tracking-widest text-[#00D4FF] uppercase font-bold mb-4">
           Reserve Early Access Slot
         </div>
@@ -197,7 +197,7 @@ export function FinalCTA({ scrollProgress }: SceneProps) {
         <div className="space-y-2 pt-2 border-t border-white/5">
           <a
             href="https://safevitals.in?desktop=true"
-            className="w-full py-3 rounded-xl border border-white/10 bg-white/[0.01] hover:bg-white/[0.03] text-white text-[10px] font-semibold font-mono tracking-wider uppercase text-center flex items-center justify-center gap-1.5 active:scale-[0.98] transition-transform"
+            className="w-full py-3 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-md hover:bg-white/[0.04] text-white text-[10px] font-semibold font-mono tracking-wider uppercase text-center flex items-center justify-center gap-1.5 active:scale-[0.98] transition-transform shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
           >
             <Globe className="w-3.5 h-3.5 text-[#00D4FF]" />
             View Desktop Site

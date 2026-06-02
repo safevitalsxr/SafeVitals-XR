@@ -82,7 +82,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
 
         {/* Outer Node 1: Hospital Gateway (Top Left) */}
         <div className="absolute left-[8%] top-[12%] flex flex-col items-center gap-1 z-10 text-center select-none">
-          <div className="w-10 h-10 rounded-xl bg-[#0A1221] border border-[#00D4FF]/30 flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.1)]">
+          <div className="w-10 h-10 rounded-xl bg-white/[0.02] border border-[#00D4FF]/30 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.1),inset_0_1px_1px_rgba(255,255,255,0.05)]">
             <Building2 className="w-4 h-4 text-[#00D4FF]" />
           </div>
           <span className="text-[7px] font-mono text-white/50 tracking-wider">VJ-ICU HUB</span>
@@ -91,7 +91,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
 
         {/* Outer Node 2: Alert Dispatcher (Top Right) */}
         <div className="absolute right-[8%] top-[12%] flex flex-col items-center gap-1 z-10 text-center select-none">
-          <div className="w-10 h-10 rounded-xl bg-[#0A1221] border border-red-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+          <div className="w-10 h-10 rounded-xl bg-white/[0.02] border border-red-500/30 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(239,68,68,0.1),inset_0_1px_1px_rgba(255,255,255,0.05)]">
             <Users className="w-4 h-4 text-red-400" />
           </div>
           <span className="text-[7px] font-mono text-white/50 tracking-wider">TRIAGE CONSOLE</span>
@@ -101,7 +101,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
         {/* Central Node: SafeVitals Cloud Platform Core */}
         <div className="absolute flex flex-col items-center gap-1 z-20 text-center select-none">
           <motion.div
-            className="w-14 h-14 rounded-2xl bg-[#0A1221] border border-violet-500 flex items-center justify-center shadow-[0_0_25px_rgba(124,58,237,0.25)]"
+            className="w-14 h-14 rounded-2xl bg-white/[0.02] border border-violet-500/40 backdrop-blur-md flex items-center justify-center shadow-[0_0_25px_rgba(124,58,237,0.25),inset_0_1px_1px_rgba(255,255,255,0.05)]"
             animate={{ scale: [1, 1.06, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -113,7 +113,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
 
         {/* Outer Node 3: Medical Dashboard Terminal (Bottom Left) */}
         <div className="absolute left-[8%] bottom-[12%] flex flex-col items-center gap-1 z-10 text-center select-none">
-          <div className="w-10 h-10 rounded-xl bg-[#0A1221] border border-white/10 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
             <Eye className="w-4 h-4 text-white/60" />
           </div>
           <span className="text-[7px] font-mono text-white/50 tracking-wider">WARD SCREEN</span>
@@ -122,7 +122,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
 
         {/* Outer Node 4: Mobile API Consumer (Bottom Right) */}
         <div className="absolute right-[8%] bottom-[12%] flex flex-col items-center gap-1 z-10 text-center select-none">
-          <div className="w-10 h-10 rounded-xl bg-[#0A1221] border border-white/10 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-md flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
             <Server className="w-4 h-4 text-white/60" />
           </div>
           <span className="text-[7px] font-mono text-white/50 tracking-wider">MOBILE API</span>
@@ -131,7 +131,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
       </div>
 
       {/* scrolling telemetry console logger */}
-      <div className="w-full max-w-[280px] mx-auto rounded-xl bg-black/40 border border-white/5 p-2.5 font-mono text-[7px] text-[#00D4FF]/80 space-y-1 shadow-[0_8px_20px_rgba(0,0,0,0.5)] z-10 select-none">
+      <div className="w-full max-w-[280px] mx-auto rounded-xl bg-white/[0.02] border border-white/10 backdrop-blur-xl p-2.5 font-mono text-[7px] text-[#00D4FF]/80 space-y-1 shadow-[0_8px_20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] z-10 select-none">
         <div className="flex items-center justify-between text-white/35 border-b border-white/5 pb-1 mb-1 text-[6px]">
           <span>SV-EDGE INSTANT SYNC FEED</span>
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />

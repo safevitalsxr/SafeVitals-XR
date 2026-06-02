@@ -36,7 +36,7 @@ export function DashboardScene({ scrollProgress }: SceneProps) {
       </div>
 
       {/* Central Station Console Mockup */}
-      <div className="relative w-full max-w-[320px] mx-auto aspect-[1.3] rounded-2xl bg-[#090d16] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col justify-between font-mono p-2">
+      <div className="relative w-full max-w-[320px] mx-auto aspect-[1.3] rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-xl shadow-[0_25px_60px_rgba(0,0,0,0.65),inset_0_1px_1px_rgba(255,255,255,0.12)] overflow-hidden flex flex-col justify-between font-mono p-2">
         {/* Header Bar */}
         <div className="flex items-center justify-between border-b border-white/5 pb-1.5 text-[7px] text-white/50 select-none">
           <div className="flex items-center gap-1">
@@ -67,7 +67,7 @@ export function DashboardScene({ scrollProgress }: SceneProps) {
           {/* Main Panel grid */}
           <div className="col-span-4 grid grid-rows-3 gap-1.5">
             {/* Row 1: Bed 01 Patient Cell (Stable) */}
-            <div className="row-span-1 rounded bg-[#0b1220] border border-[#00D4FF]/20 p-1.5 flex items-center justify-between select-none">
+            <div className="row-span-1 rounded bg-white/[0.02] border border-[#00D4FF]/25 p-1.5 flex items-center justify-between select-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
               <div className="flex flex-col">
                 <span className="text-[6px] text-white/40">BED 01</span>
                 <span className="text-[8px] font-bold text-white leading-tight">Sarah J.</span>
@@ -85,7 +85,7 @@ export function DashboardScene({ scrollProgress }: SceneProps) {
             </div>
 
             {/* Row 2: Bed 02 Patient Cell (Critical Warning) */}
-            <div className="row-span-1 rounded bg-red-950/20 border border-red-500/30 p-1.5 flex items-center justify-between select-none shadow-[inset_0_0_10px_rgba(239,68,68,0.05)]">
+            <div className="row-span-1 rounded bg-red-950/15 border border-red-500/35 backdrop-blur-md p-1.5 flex items-center justify-between select-none shadow-[inset_0_0_10px_rgba(239,68,68,0.05),inset_0_1px_1px_rgba(255,255,255,0.05)]">
               <div className="flex flex-col">
                 <span className="text-[6px] text-red-400 font-bold">BED 02 [CRIT]</span>
                 <span className="text-[8px] font-bold text-white leading-tight">Robert C.</span>
@@ -103,7 +103,7 @@ export function DashboardScene({ scrollProgress }: SceneProps) {
             </div>
 
             {/* Row 3: Live Ward Alert Triage Log */}
-            <div className="row-span-1 rounded bg-black/40 border border-white/5 p-1.5 flex flex-col justify-between select-none">
+            <div className="row-span-1 rounded bg-white/[0.01] border border-white/10 p-1.5 flex flex-col justify-between select-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
               <span className="text-[6px] text-white/30 block">SYSTEM STATUS SUMMARY LOGS</span>
               <div className="flex items-center justify-between text-[7px] leading-none">
                 <span className="text-[#00D4FF] font-semibold">&gt; INCOMING PATIENT BEDS: OK</span>

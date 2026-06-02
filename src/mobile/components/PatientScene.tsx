@@ -53,7 +53,7 @@ export function PatientScene({ scrollProgress }: SceneProps) {
         {/* Holographic scanning bounding box */}
         <motion.div
           style={{ opacity: bodyOpacity }}
-          className="absolute w-[240px] h-[240px] border border-white/[0.03] rounded-3xl flex items-center justify-center pointer-events-none"
+          className="absolute w-[240px] h-[240px] border border-white/10 bg-white/[0.02] backdrop-blur-md rounded-3xl flex items-center justify-center pointer-events-none shadow-[inset_0_0_15px_rgba(255,255,255,0.02)]"
         >
           {/* Scanning corners */}
           <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t border-l border-[#00D4FF]/40 rounded-tl" />
@@ -102,7 +102,7 @@ export function PatientScene({ scrollProgress }: SceneProps) {
         {/* Floating Vitals Panels */}
         <motion.div style={{ opacity: vitalsOpacity }} className="absolute inset-0 w-full h-full z-20">
           {/* Heart Rate: Top Left */}
-          <div className="absolute left-[2%] top-[18%] flex flex-col items-start bg-[#0A1221]/40 border border-[#00D4FF]/20 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(0,212,255,0.06)] min-w-[90px]">
+          <div className="absolute left-[2%] top-[18%] flex flex-col items-start bg-white/[0.02] border border-[#00D4FF]/20 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(0,212,255,0.06),inset_0_1px_1px_rgba(255,255,255,0.05)] min-w-[90px]">
             <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">HR // BPM</span>
             <div className="flex items-baseline gap-1 mt-0.5">
               <span className="text-2xl font-heading font-extrabold text-[#00D4FF] animate-pulse">72</span>
@@ -112,7 +112,7 @@ export function PatientScene({ scrollProgress }: SceneProps) {
           </div>
 
           {/* SpO2: Top Right */}
-          <div className="absolute right-[2%] top-[18%] flex flex-col items-end text-right bg-[#0A1221]/40 border border-[#10B981]/20 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(16,185,129,0.06)] min-w-[90px]">
+          <div className="absolute right-[2%] top-[18%] flex flex-col items-end text-right bg-white/[0.02] border border-[#10B981]/20 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(16,185,129,0.06),inset_0_1px_1px_rgba(255,255,255,0.05)] min-w-[90px]">
             <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">SpO₂ // %</span>
             <div className="flex items-baseline gap-1 mt-0.5">
               <span className="text-2xl font-heading font-extrabold text-[#10B981]">98</span>
@@ -122,7 +122,7 @@ export function PatientScene({ scrollProgress }: SceneProps) {
           </div>
 
           {/* BP: Bottom Left */}
-          <div className="absolute left-[2%] bottom-[18%] flex flex-col items-start bg-[#0A1221]/40 border border-white/10 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(255,255,255,0.02)] min-w-[90px]">
+          <div className="absolute left-[2%] bottom-[18%] flex flex-col items-start bg-white/[0.02] border border-white/10 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(255,255,255,0.02),inset_0_1px_1px_rgba(255,255,255,0.05)] min-w-[90px]">
             <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">BP // MMHG</span>
             <div className="flex items-baseline gap-1 mt-0.5">
               <span className="text-xl font-heading font-extrabold text-white">120/80</span>
@@ -131,7 +131,7 @@ export function PatientScene({ scrollProgress }: SceneProps) {
           </div>
 
           {/* Temp: Bottom Right */}
-          <div className="absolute right-[2%] bottom-[18%] flex flex-col items-end text-right bg-[#0A1221]/40 border border-white/10 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(255,255,255,0.02)] min-w-[90px]">
+          <div className="absolute right-[2%] bottom-[18%] flex flex-col items-end text-right bg-white/[0.02] border border-white/10 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(255,255,255,0.02),inset_0_1px_1px_rgba(255,255,255,0.05)] min-w-[90px]">
             <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">TEMP // °C</span>
             <div className="flex items-baseline gap-1 mt-0.5">
               <span className="text-xl font-heading font-extrabold text-white">36.8</span>
