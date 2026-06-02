@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Navigation } from "@/components/navigation";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const inter = Inter({
@@ -79,11 +80,16 @@ const organizationSchema = {
   description: "Real-Time Healthcare Intelligence in XR",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const host = headersList.get("host") || "";
+  const isMobileHeader = headersList.get("x-is-mobile") === "true";
+  const isMobile = host.startsWith("mobile.") || isMobileHeader;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -95,10 +101,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased bg-background text-text font-sans selection:bg-accent/30`} suppressHydrationWarning>
-        <SmoothScroll />
-        <Navigation />
+        {!isMobile && <SmoothScroll />}
+        {!isMobile && <Navigation />}
         {children}
-        <Footer />
+        {!isMobile && <Footer />}
       </body>
     </html>
   );

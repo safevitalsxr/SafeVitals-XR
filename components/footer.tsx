@@ -19,6 +19,12 @@ export function Footer() {
           <span className="font-mono text-accent mb-2 uppercase tracking-widest text-xs">Social</span>
           <a href="#" className="hover:text-text transition-colors">LinkedIn</a>
           <a href="#" className="hover:text-text transition-colors">Twitter</a>
+          <a
+            href="https://mobile.safevitals.in"
+            className="hover:text-text text-xs text-[#00D4FF] border border-[#00D4FF]/25 px-3.5 py-1.5 rounded bg-[#00D4FF]/5 mt-2 transition-all inline-flex items-center gap-1.5 w-fit"
+          >
+            View Mobile Site
+          </a>
         </div>
 
         <div className="flex flex-col gap-4">
