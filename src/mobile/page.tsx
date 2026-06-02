@@ -11,15 +11,15 @@ import { DashboardScene } from "@/src/mobile/components/DashboardScene";
 import { XRScene } from "@/src/mobile/components/XRScene";
 import { FinalCTA } from "@/src/mobile/components/FinalCTA";
 
-const SCENE_INDICES = [
-  { label: "Intro", progress: 0.0, activeRange: [0.0, 0.119] },
-  { label: "Patient", progress: 0.16, activeRange: [0.12, 0.259] },
-  { label: "Monitor", progress: 0.31, activeRange: [0.26, 0.379] },
-  { label: "Bridge", progress: 0.47, activeRange: [0.38, 0.539] },
-  { label: "Cloud", progress: 0.60, activeRange: [0.54, 0.679] },
-  { label: "Dashboard", progress: 0.74, activeRange: [0.68, 0.799] },
-  { label: "XR Layer", progress: 0.86, activeRange: [0.80, 0.919] },
-  { label: "Reserve", progress: 0.96, activeRange: [0.92, 1.0] },
+const SCENES = [
+  { label: "Intro", progress: 0.0, component: HeroScene },
+  { label: "Patient", progress: 0.16, component: PatientScene },
+  { label: "Monitor", progress: 0.31, component: MonitorScene },
+  { label: "Bridge", progress: 0.47, component: BridgeScene },
+  { label: "Cloud", progress: 0.60, component: CloudScene },
+  { label: "Dashboard", progress: 0.74, component: DashboardScene },
+  { label: "XR Layer", progress: 0.86, component: XRScene },
+  { label: "Reserve", progress: 0.96, component: FinalCTA },
 ];
 
 export default function MobilePage() {
@@ -29,12 +29,22 @@ export default function MobilePage() {
     offset: ["start start", "end end"],
   });
 
-  const [currentProgress, setCurrentProgress] = useState(0);
+  const [activeScene, setActiveScene] = useState(0);
 
-  // Sync scrollYProgress to local state to drive the indicator highlight
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
-      setCurrentProgress(latest);
+      // Route scroll percentage to active scene index
+      let index = 0;
+      if (latest < 0.12) index = 0;
+      else if (latest < 0.28) index = 1;
+      else if (latest < 0.42) index = 2;
+      else if (latest < 0.56) index = 3;
+      else if (latest < 0.70) index = 4;
+      else if (latest < 0.82) index = 5;
+      else if (latest < 0.92) index = 6;
+      else index = 7;
+
+      setActiveScene(index);
     });
   }, [scrollYProgress]);
 
@@ -48,64 +58,68 @@ export default function MobilePage() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full h-[1000vh] bg-black">
-      {/* Sticky Narrative Screen Frame */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black select-none">
+    <div ref={containerRef} className="relative w-full h-[800vh] bg-black">
+      {/* Sticky Screen Viewport Container */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black select-none flex items-center justify-center">
         
-        {/* Layer 1: Background Global Grids */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(10,18,33,0.8),black_70%)] z-0 pointer-events-none" />
+        {/* Volumetric Dark Ambient Backdrop Glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(10,18,33,0.95),black_75%)] z-0 pointer-events-none" />
 
-        {/* Layer 2: Seamlessly Morphing Scenes */}
-        <HeroScene scrollProgress={scrollYProgress} />
-        <PatientScene scrollProgress={scrollYProgress} />
-        <MonitorScene scrollProgress={scrollYProgress} />
-        <BridgeScene scrollProgress={scrollYProgress} />
-        <CloudScene scrollProgress={scrollYProgress} />
-        <DashboardScene scrollProgress={scrollYProgress} />
-        <XRScene scrollProgress={scrollYProgress} />
-        <FinalCTA scrollProgress={scrollYProgress} />
+        {/* Stacked Scene Containers */}
+        {SCENES.map((scene, idx) => {
+          const SceneComponent = scene.component;
+          const isActive = idx === activeScene;
 
-        {/* Layer 3: Interactive Right-Side Navigation Dots Timeline */}
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-5 z-50 pointer-events-auto">
-          {SCENE_INDICES.map((scene) => {
-            const isActive =
-              currentProgress >= scene.activeRange[0] &&
-              currentProgress <= scene.activeRange[1];
+          return (
+            <div
+              key={scene.label}
+              style={{
+                pointerEvents: isActive ? "auto" : "none",
+              }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <SceneComponent scrollProgress={scrollYProgress} />
+            </div>
+          );
+        })}
+
+        {/* Interactive Indicator Timeline Panel */}
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-6 z-50 pointer-events-auto">
+          {SCENES.map((scene, idx) => {
+            const isActive = idx === activeScene;
 
             return (
               <button
                 key={scene.label}
                 onClick={() => handleNavClick(scene.progress)}
-                className="group flex items-center gap-2.5 text-right outline-none cursor-pointer"
-                aria-label={`Jump to ${scene.label}`}
+                className="group flex items-center gap-3 text-right outline-none cursor-pointer"
+                aria-label={`Show ${scene.label}`}
               >
-                {/* Horizontal label appearing on hover or active */}
                 <motion.span
                   initial={{ opacity: 0, x: 5 }}
                   animate={{
-                    opacity: isActive ? 0.75 : 0,
+                    opacity: isActive ? 0.8 : 0,
                     x: isActive ? 0 : 5,
                   }}
-                  className="font-mono text-[7px] tracking-wider uppercase text-white/95 group-hover:opacity-60 transition-opacity pr-0.5"
+                  className="font-mono text-[8px] tracking-widest uppercase text-white/90 pr-0.5"
                 >
                   {scene.label}
                 </motion.span>
 
-                {/* Glowing navigation bullet dot */}
-                <div className="relative flex items-center justify-center w-3 h-3">
+                <div className="relative flex items-center justify-center w-3.5 h-3.5">
                   {isActive && (
                     <motion.div
-                      layoutId="activeGlowDot"
-                      className="absolute w-2 h-2 rounded-full bg-[#00D4FF]/40 blur-[2px]"
-                      transition={{ type: "spring", damping: 12 }}
+                      layoutId="activeSceneIndicatorRing"
+                      className="absolute w-2.5 h-2.5 rounded-full bg-[#00D4FF]/25 blur-[1.5px]"
+                      transition={{ type: "spring", damping: 14 }}
                     />
                   )}
                   <motion.div
                     animate={{
-                      scale: isActive ? 1.3 : 1,
-                      backgroundColor: isActive ? "#00D4FF" : "rgba(255, 255, 255, 0.18)",
+                      scale: isActive ? 1.25 : 1,
+                      backgroundColor: isActive ? "#00D4FF" : "rgba(255, 255, 255, 0.15)",
                     }}
-                    className="w-1.5 h-1.5 rounded-full transition-colors duration-300"
+                    className="w-1.5 h-1.5 rounded-full transition-all duration-300"
                   />
                 </div>
               </button>
@@ -113,7 +127,7 @@ export default function MobilePage() {
           })}
         </div>
 
-        {/* Global Progress Track Line (Top Screen Overlay) */}
+        {/* Top Progress Tracker Bar */}
         <div className="absolute top-0 left-0 w-full h-0.5 bg-white/5 z-50 pointer-events-none">
           <motion.div
             style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}

@@ -7,35 +7,32 @@ interface SceneProps {
 }
 
 export function PatientScene({ scrollProgress }: SceneProps) {
-  // Scene 2 & 3 Range: 0.10 -> 0.28
-  // 1. Overall Scene Visibility
-  const sceneOpacity = useTransform(scrollProgress, [0.10, 0.12, 0.26, 0.28], [0, 1, 1, 0]);
-  
-  // 2. Patient Body Silhouette (Fades out earlier than vitals to symbolize "only seeing numbers")
-  const bodyOpacity = useTransform(scrollProgress, [0.10, 0.13, 0.20, 0.23], [0, 0.55, 0.55, 0]);
-  
-  // 3. Vitals Nodes (Fade in at 0.16, stay visible till 0.28)
-  const vitalsOpacity = useTransform(scrollProgress, [0.15, 0.18, 0.26, 0.28], [0, 1, 1, 0]);
+  // Patient Scene Range: 0.12 -> 0.28
+  // Scene transitions
+  const sceneOpacity = useTransform(scrollProgress, [0.08, 0.12, 0.24, 0.28], [0, 1, 1, 0]);
+  const scale = useTransform(scrollProgress, [0.08, 0.12, 0.24, 0.28], [0.96, 1, 1, 0.96]);
+  const y = useTransform(scrollProgress, [0.08, 0.12, 0.24, 0.28], [25, 0, 0, -25]);
 
-  // 4. Headline 1: "Every patient is generating data." (Visible: 0.11 -> 0.18)
-  const text1Opacity = useTransform(scrollProgress, [0.10, 0.12, 0.16, 0.18], [0, 1, 1, 0]);
-  const text1Y = useTransform(scrollProgress, [0.10, 0.12, 0.16, 0.18], [20, 0, 0, -20]);
+  // Torso outline fades out at 0.20 to reveal only numbers
+  const bodyOpacity = useTransform(scrollProgress, [0.08, 0.12, 0.19, 0.22], [0, 0.6, 0.6, 0]);
+  const vitalsOpacity = useTransform(scrollProgress, [0.08, 0.12, 0.24, 0.28], [0, 1, 1, 0]);
 
-  // 5. Headline 2: "But hospitals only see numbers." (Visible: 0.19 -> 0.27)
-  const text2Opacity = useTransform(scrollProgress, [0.18, 0.20, 0.25, 0.27], [0, 1, 1, 0]);
-  const text2Y = useTransform(scrollProgress, [0.18, 0.20, 0.25, 0.27], [20, 0, 0, -20]);
+  // Copy transitions (perfect handover, no dead zones)
+  const text1Opacity = useTransform(scrollProgress, [0.08, 0.12, 0.18, 0.20], [0, 1, 1, 0]);
+  const text1Y = useTransform(scrollProgress, [0.08, 0.12, 0.18, 0.20], [15, 0, 0, -15]);
 
-  // Parallax shifts
-  const bodyY = useTransform(scrollProgress, [0.10, 0.28], [20, -20]);
+  const text2Opacity = useTransform(scrollProgress, [0.18, 0.20, 0.24, 0.28], [0, 1, 1, 0]);
+  const text2Y = useTransform(scrollProgress, [0.18, 0.20, 0.24, 0.28], [15, 0, 0, -15]);
+
+  const bodyY = useTransform(scrollProgress, [0.12, 0.28], [15, -15]);
 
   return (
     <motion.div
-      style={{ opacity: sceneOpacity }}
-      className="absolute inset-0 w-full h-full bg-black flex flex-col justify-between px-6 py-20 z-30 pointer-events-none"
+      style={{ opacity: sceneOpacity, scale, y }}
+      className="absolute inset-0 w-full h-full bg-transparent flex flex-col justify-between px-6 py-20 z-30 pointer-events-none"
     >
-      {/* Top Narrative Copy Panel */}
+      {/* Top Narrative Copy */}
       <div className="relative w-full h-20 flex items-center justify-center text-center">
-        {/* Text 1 */}
         <motion.p
           style={{ opacity: text1Opacity, y: text1Y }}
           className="absolute font-sans text-lg sm:text-xl font-light text-white/90 max-w-xs leading-relaxed"
@@ -43,7 +40,6 @@ export function PatientScene({ scrollProgress }: SceneProps) {
           Every patient is generating data.
         </motion.p>
 
-        {/* Text 2 */}
         <motion.p
           style={{ opacity: text2Opacity, y: text2Y }}
           className="absolute font-sans text-lg sm:text-xl font-light text-[#FF8A8A] max-w-xs leading-relaxed"
@@ -52,102 +48,99 @@ export function PatientScene({ scrollProgress }: SceneProps) {
         </motion.p>
       </div>
 
-      {/* Silhouette & Vitals Mapping Center */}
-      <motion.div
-        style={{ y: bodyY }}
-        className="relative flex-grow flex items-center justify-center"
-      >
-        {/* Torso Silhouette Graphic */}
+      {/* Torso Silhouette & Vitals Overlay */}
+      <motion.div style={{ y: bodyY }} className="relative flex-grow flex items-center justify-center">
+        {/* Holographic scanning bounding box */}
+        <motion.div
+          style={{ opacity: bodyOpacity }}
+          className="absolute w-[240px] h-[240px] border border-white/[0.03] rounded-3xl flex items-center justify-center pointer-events-none"
+        >
+          {/* Scanning corners */}
+          <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t border-l border-[#00D4FF]/40 rounded-tl" />
+          <div className="absolute top-2 right-2 w-3.5 h-3.5 border-t border-r border-[#00D4FF]/40 rounded-tr" />
+          <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b border-l border-[#00D4FF]/40 rounded-bl" />
+          <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b border-r border-[#00D4FF]/40 rounded-br" />
+
+          {/* Micro HUD status overlay */}
+          <div className="absolute top-4 left-4 font-mono text-[5px] text-[#00D4FF]/50 tracking-wider">
+            FOCUS // GRID_S2
+          </div>
+          <div className="absolute bottom-4 right-4 font-mono text-[5px] text-[#00D4FF]/50 tracking-wider">
+            ID: SV_PATIENT_992
+          </div>
+        </motion.div>
+
+        {/* Silhouette Vector */}
         <motion.svg
           style={{ opacity: bodyOpacity }}
-          className="w-full h-full max-h-[320px] max-w-[280px]"
+          className="w-full h-full max-h-[300px] max-w-[280px] z-10"
           viewBox="0 0 200 200"
           fill="none"
         >
-          {/* Glowing human vector line */}
           <path
             d="M 60 180 C 60 180, 75 140, 75 110 L 80 50 C 80 25, 120 25, 120 50 L 125 110 C 125 140, 140 180, 140 180"
-            stroke="rgba(0, 212, 255, 0.5)"
+            stroke="rgba(0, 212, 255, 0.4)"
             strokeWidth="1.5"
             fill="none"
           />
+          <path d="M 83 95 Q 100 90 117 95" stroke="rgba(0, 212, 255, 0.2)" strokeWidth="1" />
+          <path d="M 80 110 Q 100 105 120 110" stroke="rgba(0, 212, 255, 0.2)" strokeWidth="1" />
+          <path d="M 78 125 Q 100 120 122 125" stroke="rgba(0, 212, 255, 0.2)" strokeWidth="1" />
 
-          {/* Ribs / Lungs structure */}
-          <path d="M 83 95 Q 100 90 117 95" stroke="rgba(0, 212, 255, 0.25)" strokeWidth="1" />
-          <path d="M 80 110 Q 100 105 120 110" stroke="rgba(0, 212, 255, 0.25)" strokeWidth="1" />
-          <path d="M 78 125 Q 100 120 122 125" stroke="rgba(0, 212, 255, 0.25)" strokeWidth="1" />
-
-          {/* Beating cardiac center */}
+          {/* Heart beating dot */}
           <motion.circle
             cx="93"
             cy="95"
-            r="5"
+            r="4.5"
             fill="#00D4FF"
-            animate={{ scale: [1, 1.35, 1.05, 1.45, 1] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ scale: [1, 1.4, 1.05, 1.5, 1] }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+            className="drop-shadow-[0_0_8px_rgba(0,212,255,0.9)]"
           />
         </motion.svg>
 
-        {/* Floating Vitals HUD Markers (Overlay) */}
-        <motion.div
-          style={{ opacity: vitalsOpacity }}
-          className="absolute inset-0 w-full h-full z-20"
-        >
+        {/* Floating Vitals Panels */}
+        <motion.div style={{ opacity: vitalsOpacity }} className="absolute inset-0 w-full h-full z-20">
           {/* Heart Rate: Top Left */}
-          <div className="absolute left-[8%] top-[25%] flex flex-col items-start">
-            <span className="text-[8px] font-mono text-white/40 uppercase tracking-widest">HR</span>
-            <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-heading font-extrabold text-[#00D4FF] animate-pulse">72</span>
-              <span className="text-[9px] font-mono text-white/50">BPM</span>
+          <div className="absolute left-[2%] top-[18%] flex flex-col items-start bg-[#0A1221]/40 border border-[#00D4FF]/20 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(0,212,255,0.06)] min-w-[90px]">
+            <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">HR // BPM</span>
+            <div className="flex items-baseline gap-1 mt-0.5">
+              <span className="text-2xl font-heading font-extrabold text-[#00D4FF] animate-pulse">72</span>
+              <span className="text-[8px] font-mono text-[#00D4FF]/60 font-bold">LNK</span>
             </div>
-            <svg width="60" height="20" className="opacity-40 mt-1">
-              <line x1="0" y1="5" x2="45" y2="5" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 3" />
-              <line x1="45" y1="5" x2="55" y2="15" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 3" />
-            </svg>
+            <div className="w-12 h-[2px] bg-gradient-to-r from-[#00D4FF]/50 to-transparent mt-1" />
           </div>
 
           {/* SpO2: Top Right */}
-          <div className="absolute right-[8%] top-[25%] flex flex-col items-end text-right">
-            <span className="text-[8px] font-mono text-white/40 uppercase tracking-widest">SpO₂</span>
-            <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-heading font-extrabold text-[#10B981]">98</span>
-              <span className="text-[9px] font-mono text-white/50">%</span>
+          <div className="absolute right-[2%] top-[18%] flex flex-col items-end text-right bg-[#0A1221]/40 border border-[#10B981]/20 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(16,185,129,0.06)] min-w-[90px]">
+            <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">SpO₂ // %</span>
+            <div className="flex items-baseline gap-1 mt-0.5">
+              <span className="text-2xl font-heading font-extrabold text-[#10B981]">98</span>
+              <span className="text-[8px] font-mono text-[#10B981]/60 font-bold">SYS</span>
             </div>
-            <svg width="60" height="20" className="opacity-40 mt-1 flex justify-end">
-              <line x1="60" y1="5" x2="15" y2="5" stroke="#10B981" strokeWidth="1" strokeDasharray="3 3" />
-              <line x1="15" y1="5" x2="5" y2="15" stroke="#10B981" strokeWidth="1" strokeDasharray="3 3" />
-            </svg>
+            <div className="w-12 h-[2px] bg-gradient-to-l from-[#10B981]/50 to-transparent mt-1" />
           </div>
 
           {/* BP: Bottom Left */}
-          <div className="absolute left-[8%] bottom-[25%] flex flex-col items-start">
-            <span className="text-[8px] font-mono text-white/40 uppercase tracking-widest">BP</span>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-heading font-extrabold text-white">120/80</span>
-              <span className="text-[8px] font-mono text-white/40">mmHg</span>
+          <div className="absolute left-[2%] bottom-[18%] flex flex-col items-start bg-[#0A1221]/40 border border-white/10 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(255,255,255,0.02)] min-w-[90px]">
+            <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">BP // MMHG</span>
+            <div className="flex items-baseline gap-1 mt-0.5">
+              <span className="text-xl font-heading font-extrabold text-white">120/80</span>
             </div>
-            <svg width="60" height="20" className="opacity-40 mt-1">
-              <line x1="0" y1="15" x2="45" y2="15" stroke="white" strokeWidth="0.8" strokeDasharray="3 3" />
-              <line x1="45" y1="15" x2="55" y2="5" stroke="white" strokeWidth="0.8" strokeDasharray="3 3" />
-            </svg>
+            <div className="w-12 h-[2px] bg-gradient-to-r from-white/30 to-transparent mt-1.5" />
           </div>
 
           {/* Temp: Bottom Right */}
-          <div className="absolute right-[8%] bottom-[25%] flex flex-col items-end text-right">
-            <span className="text-[8px] font-mono text-white/40 uppercase tracking-widest">TEMP</span>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-heading font-extrabold text-white">36.8</span>
-              <span className="text-[9px] font-mono text-white/50">°C</span>
+          <div className="absolute right-[2%] bottom-[18%] flex flex-col items-end text-right bg-[#0A1221]/40 border border-white/10 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-[0_8px_20px_rgba(255,255,255,0.02)] min-w-[90px]">
+            <span className="text-[6px] font-mono text-white/40 uppercase tracking-widest">TEMP // °C</span>
+            <div className="flex items-baseline gap-1 mt-0.5">
+              <span className="text-xl font-heading font-extrabold text-white">36.8</span>
             </div>
-            <svg width="60" height="20" className="opacity-40 mt-1">
-              <line x1="60" y1="15" x2="15" y2="15" stroke="white" strokeWidth="0.8" strokeDasharray="3 3" />
-              <line x1="15" y1="15" x2="5" y2="5" stroke="white" strokeWidth="0.8" strokeDasharray="3 3" />
-            </svg>
+            <div className="w-12 h-[2px] bg-gradient-to-l from-white/30 to-transparent mt-1.5" />
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Empty space matching footer spacing */}
       <div className="h-6" />
     </motion.div>
   );

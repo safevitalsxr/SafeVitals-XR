@@ -8,20 +8,20 @@ interface SceneProps {
 }
 
 export function DashboardScene({ scrollProgress }: SceneProps) {
-  // Scene 8 Range: 0.66 -> 0.82
-  const sceneOpacity = useTransform(scrollProgress, [0.66, 0.69, 0.78, 0.82], [0, 1, 1, 0]);
-  const scale = useTransform(scrollProgress, [0.66, 0.69, 0.78, 0.82], [0.93, 1, 1, 0.93]);
+  // Scene 8 Range: 0.70 -> 0.82
+  const sceneOpacity = useTransform(scrollProgress, [0.66, 0.70, 0.78, 0.82], [0, 1, 1, 0]);
+  const scale = useTransform(scrollProgress, [0.66, 0.70, 0.78, 0.82], [0.96, 1, 1, 0.96]);
   const rotateX = useTransform(scrollProgress, [0.66, 0.82], [10, -10]);
-  const y = useTransform(scrollProgress, [0.66, 0.69, 0.78, 0.82], [30, 0, 0, -30]);
+  const y = useTransform(scrollProgress, [0.66, 0.70, 0.78, 0.82], [25, 0, 0, -25]);
 
-  // Headline animation
-  const textOpacity = useTransform(scrollProgress, [0.68, 0.71, 0.76, 0.80], [0, 1, 1, 0]);
-  const textY = useTransform(scrollProgress, [0.68, 0.71, 0.76, 0.80], [15, 0, 0, -15]);
+  // Headline animation - active throughout the scene's visibility
+  const textOpacity = useTransform(scrollProgress, [0.66, 0.70, 0.78, 0.82], [0, 1, 1, 0]);
+  const textY = useTransform(scrollProgress, [0.66, 0.70, 0.78, 0.82], [15, 0, 0, -15]);
 
   return (
     <motion.div
       style={{ opacity: sceneOpacity, scale, rotateX, y, transformStyle: "preserve-3d" }}
-      className="absolute inset-0 w-full h-full bg-black flex flex-col justify-between px-6 py-20 z-30 pointer-events-none perspective-[1000px]"
+      className="absolute inset-0 w-full h-full bg-transparent flex flex-col justify-between px-6 py-20 z-30 pointer-events-none perspective-[1000px]"
     >
       {/* Narrative Header */}
       <div className="text-center h-16 flex items-center justify-center">

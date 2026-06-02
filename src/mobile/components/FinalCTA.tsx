@@ -22,9 +22,9 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export function FinalCTA({ scrollProgress }: SceneProps) {
-  // Scene 10 Range: 0.90 -> 1.0 (End of page)
-  const sceneOpacity = useTransform(scrollProgress, [0.90, 0.93, 1.0], [0, 1, 1]);
-  const y = useTransform(scrollProgress, [0.90, 0.93], [40, 0]);
+  // Scene 10 Range: 0.92 -> 1.0 (End of page)
+  const sceneOpacity = useTransform(scrollProgress, [0.88, 0.92, 1.0], [0, 1, 1]);
+  const y = useTransform(scrollProgress, [0.88, 0.92], [25, 0]);
 
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
@@ -68,17 +68,18 @@ export function FinalCTA({ scrollProgress }: SceneProps) {
   return (
     <motion.div
       style={{ opacity: sceneOpacity, y }}
-      className="absolute inset-0 w-full h-full bg-black flex flex-col justify-between overflow-y-auto px-6 pt-16 pb-8 z-40 pointer-events-auto"
+      className="absolute inset-0 w-full h-full bg-[#030712]/95 flex flex-col justify-between overflow-y-auto px-6 pt-16 pb-8 z-40 pointer-events-auto"
     >
       {/* Narrative Header */}
       <div className="text-center space-y-3 max-w-sm mx-auto">
         <h1 className="font-heading text-3xl font-extrabold tracking-widest text-[#F9FAFB] uppercase">
-          SafeVitals <span className="text-[#00D4FF]">XR</span>
+          SafeVitals <span className="text-[#00D4FF] drop-shadow-[0_0_10px_rgba(0,212,255,0.3)]">XR</span>
         </h1>
         <p className="font-sans text-xs text-white/55 font-light leading-relaxed">
           Building the future of patient monitoring.
         </p>
       </div>
+
 
       {/* Interactive CRM Form Card */}
       <div className="w-full max-w-[360px] mx-auto rounded-2xl bg-[#0A1221]/30 border border-white/5 p-5 backdrop-blur-md shadow-[0_15px_30px_rgba(0,0,0,0.5)] my-6">

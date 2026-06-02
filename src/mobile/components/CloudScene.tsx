@@ -8,22 +8,22 @@ interface SceneProps {
 }
 
 export function CloudScene({ scrollProgress }: SceneProps) {
-  // Scene 7 Range: 0.52 -> 0.68
-  const sceneOpacity = useTransform(scrollProgress, [0.52, 0.55, 0.64, 0.68], [0, 1, 1, 0]);
-  const scale = useTransform(scrollProgress, [0.52, 0.55, 0.64, 0.68], [0.93, 1, 1, 0.93]);
-  const y = useTransform(scrollProgress, [0.52, 0.55, 0.64, 0.68], [30, 0, 0, -30]);
+  // Scene 7 Range: 0.56 -> 0.70
+  const sceneOpacity = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [0, 1, 1, 0]);
+  const scale = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [0.96, 1, 1, 0.96]);
+  const y = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [25, 0, 0, -25]);
 
   // Network path drawing transition (0.52 -> 0.60 draw lines, then hold)
   const lineDraw = useTransform(scrollProgress, [0.52, 0.60], [0, 1]);
 
-  // Headline animation
-  const textOpacity = useTransform(scrollProgress, [0.54, 0.57, 0.62, 0.66], [0, 1, 1, 0]);
-  const textY = useTransform(scrollProgress, [0.54, 0.57, 0.62, 0.66], [15, 0, 0, -15]);
+  // Headline animation - active throughout the scene's visibility
+  const textOpacity = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [0, 1, 1, 0]);
+  const textY = useTransform(scrollProgress, [0.52, 0.56, 0.66, 0.70], [15, 0, 0, -15]);
 
   return (
     <motion.div
       style={{ opacity: sceneOpacity, scale, y }}
-      className="absolute inset-0 w-full h-full bg-black flex flex-col justify-between px-6 py-20 z-30 pointer-events-none"
+      className="absolute inset-0 w-full h-full bg-transparent flex flex-col justify-between px-6 py-20 z-30 pointer-events-none"
     >
       {/* Narrative Header */}
       <div className="text-center h-16 flex items-center justify-center">
@@ -44,6 +44,10 @@ export function CloudScene({ scrollProgress }: SceneProps) {
 
         {/* Vector network connection lines */}
         <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none" viewBox="0 0 200 200">
+          {/* Orbital rings */}
+          <circle cx="100" cy="100" r="60" stroke="rgba(124, 58, 237, 0.08)" strokeWidth="1" fill="none" />
+          <circle cx="100" cy="100" r="35" stroke="rgba(0, 212, 255, 0.05)" strokeWidth="0.8" strokeDasharray="2 2" fill="none" />
+
           <g stroke="rgba(124, 58, 237, 0.25)" strokeWidth="1" strokeDasharray="3 3">
             {/* Central Cloud Node (100, 100) connections to outer nodes */}
             <motion.line x1="100" y1="100" x2="40" y2="50" style={{ pathLength: lineDraw }} />
@@ -97,7 +101,7 @@ export function CloudScene({ scrollProgress }: SceneProps) {
         {/* Central Node: SafeVitals Cloud Platform Core */}
         <div className="absolute flex flex-col items-center gap-1 z-20 text-center select-none">
           <motion.div
-            className="w-14 h-14 rounded-2xl bg-[#0A1221] border-2 border-violet-500 flex items-center justify-center shadow-[0_0_25px_rgba(124,58,237,0.3)]"
+            className="w-14 h-14 rounded-2xl bg-[#0A1221] border border-violet-500 flex items-center justify-center shadow-[0_0_25px_rgba(124,58,237,0.25)]"
             animate={{ scale: [1, 1.06, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -126,7 +130,26 @@ export function CloudScene({ scrollProgress }: SceneProps) {
         </div>
       </div>
 
-      <div className="h-6" />
+      {/* scrolling telemetry console logger */}
+      <div className="w-full max-w-[280px] mx-auto rounded-xl bg-black/40 border border-white/5 p-2.5 font-mono text-[7px] text-[#00D4FF]/80 space-y-1 shadow-[0_8px_20px_rgba(0,0,0,0.5)] z-10 select-none">
+        <div className="flex items-center justify-between text-white/35 border-b border-white/5 pb-1 mb-1 text-[6px]">
+          <span>SV-EDGE INSTANT SYNC FEED</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        </div>
+        <div className="flex justify-between gap-2">
+          <span className="text-white/40">10:04:12</span>
+          <span className="truncate flex-grow text-left">&gt; [INGEST] INCOMING SIGNAL: HR=72 SPO2=98</span>
+        </div>
+        <div className="flex justify-between gap-2">
+          <span className="text-white/40">10:04:13</span>
+          <span className="text-violet-400 truncate flex-grow text-left">&gt; [SEC] SECURE SOCKET ACCESS GRANTED [AES]</span>
+        </div>
+        <div className="flex justify-between gap-2">
+          <span className="text-white/40">10:04:13</span>
+          <span className="text-emerald-400 truncate flex-grow text-left">&gt; [SYNC] TRANSMITTING CENTRAL CONSOLE [STABLE]</span>
+        </div>
+      </div>
     </motion.div>
   );
 }
+

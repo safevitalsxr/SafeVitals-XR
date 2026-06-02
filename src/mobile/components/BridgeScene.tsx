@@ -8,33 +8,33 @@ interface SceneProps {
 }
 
 export function BridgeScene({ scrollProgress }: SceneProps) {
-  // Scene 5 & 6 Range: 0.36 -> 0.58
-  const sceneOpacity = useTransform(scrollProgress, [0.36, 0.39, 0.54, 0.58], [0, 1, 1, 0]);
-  const scale = useTransform(scrollProgress, [0.36, 0.39, 0.54, 0.58], [0.92, 1, 1, 0.92]);
+  // Scene 5 & 6 Range: 0.42 -> 0.56
+  const sceneOpacity = useTransform(scrollProgress, [0.38, 0.42, 0.52, 0.56], [0, 1, 1, 0]);
+  const scale = useTransform(scrollProgress, [0.38, 0.42, 0.52, 0.56], [0.96, 1, 1, 0.96]);
   
   // Rotate and tilt the product on scroll (simulating a 3D interactive render)
-  const rotateY = useTransform(scrollProgress, [0.36, 0.54], [-25, 20]);
-  const rotateX = useTransform(scrollProgress, [0.36, 0.54], [15, -10]);
-  const bridgeY = useTransform(scrollProgress, [0.36, 0.46, 0.54], [60, 0, -30]);
+  const rotateY = useTransform(scrollProgress, [0.38, 0.56], [-25, 20]);
+  const rotateX = useTransform(scrollProgress, [0.38, 0.56], [15, -10]);
+  const bridgeY = useTransform(scrollProgress, [0.38, 0.47, 0.56], [40, 0, -25]);
 
   // Lighting sheen sweep translation across the metallic surface
-  const lightSheenX = useTransform(scrollProgress, [0.37, 0.48], [-120, 240]);
+  const lightSheenX = useTransform(scrollProgress, [0.38, 0.56], [-120, 240]);
 
-  // Text 1: Reveal the Bridge product (0.36 -> 0.47)
-  const text1Opacity = useTransform(scrollProgress, [0.36, 0.39, 0.44, 0.46], [0, 1, 1, 0]);
-  const text1Y = useTransform(scrollProgress, [0.36, 0.39, 0.44, 0.46], [20, 0, 0, -20]);
+  // Text 1: Reveal the Bridge product
+  const text1Opacity = useTransform(scrollProgress, [0.38, 0.42, 0.47, 0.49], [0, 1, 1, 0]);
+  const text1Y = useTransform(scrollProgress, [0.38, 0.42, 0.47, 0.49], [15, 0, 0, -15]);
 
-  // Text 2: Transmit data stats (0.47 -> 0.57)
-  const text2Opacity = useTransform(scrollProgress, [0.46, 0.49, 0.53, 0.57], [0, 1, 1, 0]);
-  const text2Y = useTransform(scrollProgress, [0.46, 0.49, 0.53, 0.57], [20, 0, 0, -20]);
+  // Text 2: Transmit data stats
+  const text2Opacity = useTransform(scrollProgress, [0.47, 0.49, 0.52, 0.56], [0, 1, 1, 0]);
+  const text2Y = useTransform(scrollProgress, [0.47, 0.49, 0.52, 0.56], [15, 0, 0, -15]);
 
-  // Data transmission particles opacity (emitted upwards starting at 0.46)
-  const streamOpacity = useTransform(scrollProgress, [0.44, 0.47, 0.54], [0, 1, 0]);
+  // Data transmission particles opacity (emitted upwards starting at 0.42)
+  const streamOpacity = useTransform(scrollProgress, [0.42, 0.46, 0.54], [0, 1, 0]);
 
   return (
     <motion.div
       style={{ opacity: sceneOpacity, scale, transformStyle: "preserve-3d" }}
-      className="absolute inset-0 w-full h-full bg-black flex flex-col justify-between px-6 py-20 z-30 pointer-events-none perspective-[1000px]"
+      className="absolute inset-0 w-full h-full bg-transparent flex flex-col justify-between px-6 py-20 z-30 pointer-events-none perspective-[1000px]"
     >
       {/* Dynamic Copy Panel */}
       <div className="relative w-full h-24 flex items-center justify-center text-center">
@@ -121,10 +121,10 @@ export function BridgeScene({ scrollProgress }: SceneProps) {
         {/* 3D Hardware Bezel */}
         <motion.div
           style={{ y: bridgeY, rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="relative w-48 h-48 rounded-[36px] bg-gradient-to-b from-[#0e1627] to-[#040811] p-0.5 shadow-[0_30px_70px_rgba(0,0,0,0.8)] border border-white/10"
+          className="relative w-48 h-48 rounded-[36px] bg-gradient-to-b from-[#141d33] to-[#040811] p-0.5 shadow-[0_35px_80px_rgba(0,0,0,0.9)] border border-slate-700/80"
         >
           {/* Edge LED neon accent track */}
-          <div className="absolute inset-1.5 rounded-[30px] border border-cyan-500/10 shadow-[inset_0_0_15px_rgba(0,212,255,0.05)] pointer-events-none" />
+          <div className="absolute inset-1.5 rounded-[30px] border border-cyan-500/10 shadow-[inset_0_0_20px_rgba(0,212,255,0.06)] pointer-events-none" />
 
           {/* Core Hardware Faceplate */}
           <div className="relative w-full h-full rounded-[34px] bg-[#070b15]/95 overflow-hidden flex flex-col items-center justify-center gap-2">
@@ -165,3 +165,4 @@ export function BridgeScene({ scrollProgress }: SceneProps) {
     </motion.div>
   );
 }
+
