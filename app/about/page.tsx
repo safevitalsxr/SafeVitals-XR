@@ -120,7 +120,7 @@ export default function AboutPage() {
           {TEAM.map((member) => (
             <div 
               key={member.name} 
-              className="relative group overflow-hidden rounded-2xl bg-white/[0.01] border border-white/[0.04] p-5 hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_50px_rgba(6,182,212,0.08)] hover:scale-[1.02] flex flex-col justify-between"
+              className="relative group overflow-hidden rounded-2xl bg-white/[0.01] border border-white/[0.04] p-6 hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_50px_rgba(6,182,212,0.08)] hover:scale-[1.02] flex flex-col justify-between"
             >
               <div>
                 {/* Image container with 4:5 aspect ratio */}
@@ -135,7 +135,7 @@ export default function AboutPage() {
                 </div>
                 
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-cyan bg-cyan/10 px-2.5 py-1 rounded-full w-fit">
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-cyan bg-cyan/10 px-2.5 py-1 rounded-full w-fit font-medium">
                     {member.role}
                   </span>
                   {/* Social Links */}
@@ -173,10 +173,10 @@ export default function AboutPage() {
                   </div>
                 </div>
                 
-                <h4 className="text-lg font-bold text-white mb-2 tracking-tight">
+                <h4 className="text-xl font-bold text-white mb-2 tracking-tight">
                   {member.name}
                 </h4>
-                <p className="text-sm text-muted leading-relaxed mb-4">
+                <p className="text-[0.925rem] text-muted leading-relaxed mb-4">
                   {member.bio}
                 </p>
               </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
                 {member.skills.map((skill) => (
                   <span 
                     key={skill} 
-                    className="text-[9px] font-mono bg-white/[0.02] border border-white/[0.06] text-white/50 px-2 py-0.5 rounded"
+                    className="text-[10px] font-mono bg-white/[0.02] border border-white/[0.06] text-white/50 px-2 py-0.5 rounded"
                   >
                     {skill}
                   </span>

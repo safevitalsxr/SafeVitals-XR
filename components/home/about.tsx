@@ -88,12 +88,12 @@ export function AboutSection() {
 
           {/* Team Section */}
           <div className="mt-24 pt-24 border-t border-border/50">
-            <h3 className="font-mono text-sm text-accent mb-12 uppercase tracking-widest">Meet the Team</h3>
+            <h3 className="font-mono text-base text-accent mb-12 uppercase tracking-widest">Meet the Team</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {TEAM.map((member) => (
                 <div 
                   key={member.name} 
-                  className="relative group overflow-hidden rounded-2xl bg-white/[0.01] border border-white/[0.04] p-5 hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_50px_rgba(6,182,212,0.08)] hover:scale-[1.02] flex flex-col justify-between"
+                  className="relative group overflow-hidden rounded-2xl bg-white/[0.01] border border-white/[0.04] p-6 hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_50px_rgba(6,182,212,0.08)] hover:scale-[1.02] flex flex-col justify-between"
                 >
                   <div>
                     {/* Image container with 4:5 aspect ratio */}
@@ -108,7 +108,7 @@ export function AboutSection() {
                     </div>
                     
                     <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2.5 py-1 rounded-full w-fit">
+                      <span className="font-mono text-[11px] uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2.5 py-1 rounded-full w-fit font-medium">
                         {member.role}
                       </span>
                       {/* Social Links */}
@@ -146,10 +146,10 @@ export function AboutSection() {
                       </div>
                     </div>
                     
-                    <h4 className="font-heading text-lg font-bold text-white mb-2 tracking-tight">
+                    <h4 className="font-heading text-xl font-bold text-white mb-2 tracking-tight">
                       {member.name}
                     </h4>
-                    <p className="font-sans text-sm text-text-secondary leading-relaxed mb-4">
+                    <p className="font-sans text-[0.925rem] text-text-secondary leading-relaxed mb-4">
                       {member.bio}
                     </p>
                   </div>
@@ -159,7 +159,7 @@ export function AboutSection() {
                     {member.skills.map((skill) => (
                       <span 
                         key={skill} 
-                        className="text-[9px] font-mono bg-white/[0.02] border border-white/[0.06] text-white/50 px-2 py-0.5 rounded"
+                        className="text-[10px] font-mono bg-white/[0.02] border border-white/[0.06] text-white/50 px-2 py-0.5 rounded"
                       >
                         {skill}
                       </span>
