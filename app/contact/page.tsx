@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { ReserveForm } from "@/components/reserve-form";
+import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -52,7 +52,7 @@ export default function ContactPage() {
           </div>
         </div>
         <div className="rounded border border-white/10 bg-surface/60 p-5 md:p-8">
-          <ReserveForm />
+          <ContactForm />
         </div>
       </section>
 
