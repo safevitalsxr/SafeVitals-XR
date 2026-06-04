@@ -49,7 +49,7 @@ export function ReserveForm({ compact = false }: { compact?: boolean }) {
       }
       setStatus("success");
       reset();
-    } catch (err: any) {
+    } catch (err) {
       console.error("Submission error:", err);
       setStatus("error");
     }
