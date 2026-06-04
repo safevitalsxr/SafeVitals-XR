@@ -107,8 +107,8 @@ export function AboutSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
                     </div>
                     
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[11px] uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2.5 py-1 rounded-full w-fit font-medium">
+                    <div className="flex flex-col gap-2.5 mb-3">
+                      <span className="font-mono text-[10px] uppercase tracking-wider text-cyan-400 bg-cyan-400/10 px-2.5 py-1 rounded-full w-fit font-semibold whitespace-nowrap">
                         {member.role}
                       </span>
                       {/* Social Links */}
