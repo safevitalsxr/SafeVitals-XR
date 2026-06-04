@@ -102,9 +102,9 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased bg-background text-text font-sans selection:bg-accent/30`} suppressHydrationWarning>
         {!isMobile && <SmoothScroll />}
-        {!isMobile && <Navigation />}
+        <Navigation />
         {children}
-        {!isMobile && <Footer />}
+        <Footer />
       </body>
     </html>
   );

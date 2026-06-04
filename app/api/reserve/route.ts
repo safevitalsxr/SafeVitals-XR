@@ -82,7 +82,7 @@ export async function POST(request: Request) {
           pass: smtpPass,
         },
         family: 4, // Force IPv4 to prevent ENETUNREACH on IPv6-unsupported networks
-      });
+      } as any);
 
       await transporter.sendMail({
         from: `"${doctor_name} via SafeVitals" <${smtpUser}>`,
