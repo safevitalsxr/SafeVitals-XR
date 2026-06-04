@@ -81,6 +81,7 @@ export async function POST(request: Request) {
           user: smtpUser,
           pass: smtpPass,
         },
+        family: 4, // Force IPv4 to prevent ENETUNREACH on IPv6-unsupported networks
       });
 
       await transporter.sendMail({
