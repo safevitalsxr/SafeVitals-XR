@@ -65,10 +65,10 @@ export function HeroStory() {
               powered by digital twins, AI insights, and SafeVitals Bridge.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/reserve" className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-void transition hover:bg-cyan">
+              <Link href="/reserve" className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-[#00D4FF]">
                 Reserve Demo <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </Link>
-              <Link href="/platform" className="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan/50 hover:bg-cyan/10">
+              <Link href="/platform" className="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#00D4FF]/50 hover:bg-[#00D4FF]/10">
                 Watch Platform
               </Link>
             </div>
@@ -86,12 +86,12 @@ export function HeroStory() {
                 return (
                   <article key={scene.title} className="w-[23rem] shrink-0 rounded border border-white/12 bg-surface/80 p-5 shadow-2xl backdrop-blur md:w-[27rem]">
                     <div className="mb-16 flex items-center justify-between">
-                      <span className="grid h-11 w-11 place-items-center rounded bg-cyan/10 text-cyan">
+                      <span className="grid h-11 w-11 place-items-center rounded bg-cyan-400/10 text-cyan-400">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </span>
                       <span className="font-mono text-xs text-muted">0{index + 1} / 06</span>
                     </div>
-                    <p className="font-mono text-xs uppercase tracking-widest text-cyan">{scene.label}</p>
+                    <p className="font-mono text-xs uppercase tracking-widest text-cyan-400">{scene.label}</p>
                     <h2 className="mt-4 text-2xl font-semibold leading-tight">{scene.title}</h2>
                     <p className="mt-4 text-sm leading-6 text-muted">{scene.copy}</p>
                     <div className="mt-8 h-1 overflow-hidden rounded-full bg-white/10">
@@ -101,11 +101,11 @@ export function HeroStory() {
                 );
               })}
             </motion.div>
-            <div className="absolute bottom-8 left-8 right-8 rounded border border-cyan/20 bg-void/80 p-4 backdrop-blur">
+            <div className="absolute bottom-8 left-8 right-8 rounded border border-cyan-400/20 bg-black/80 p-4 backdrop-blur">
               <div className="grid grid-cols-3 gap-3 font-mono text-xs text-muted">
-                <span className="text-cyan">Bridge online</span>
+                <span className="text-cyan-400">Bridge online</span>
                 <span>184k signals/min</span>
-                <span className="text-mint">Twin sync 99.9%</span>
+                <span className="text-emerald-400">Twin sync 99.9%</span>
               </div>
             </div>
           </div>

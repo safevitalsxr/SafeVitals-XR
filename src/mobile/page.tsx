@@ -10,6 +10,17 @@ import { CloudScene } from "@/src/mobile/components/CloudScene";
 import { DashboardScene } from "@/src/mobile/components/DashboardScene";
 import { XRScene } from "@/src/mobile/components/XRScene";
 import { FinalCTA } from "@/src/mobile/components/FinalCTA";
+import dynamic from "next/dynamic";
+
+const MobileHeroCanvas = dynamic(
+  () => import("@/src/mobile/components/MobileHeroCanvas").then((mod) => mod.MobileHeroCanvas),
+  { ssr: false }
+);
+
+const MobileBridgeCanvas = dynamic(
+  () => import("@/src/mobile/components/MobileBridgeCanvas").then((mod) => mod.MobileBridgeCanvas),
+  { ssr: false }
+);
 
 const SCENES = [
   { label: "Intro", progress: 0.0, component: HeroScene },
@@ -64,6 +75,10 @@ export default function MobilePage() {
         
         {/* Volumetric Dark Ambient Backdrop Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(10,18,33,0.95),black_75%)] z-0 pointer-events-none" />
+
+        {/* High-Fidelity Scroll-Driven Background Canvases */}
+        <MobileHeroCanvas scrollYProgress={scrollYProgress} />
+        <MobileBridgeCanvas scrollYProgress={scrollYProgress} />
 
         {/* Stacked Scene Containers */}
         {SCENES.map((scene, idx) => {

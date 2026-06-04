@@ -18,25 +18,7 @@ export function HeroScene({ scrollProgress }: SceneProps) {
       style={{ opacity, scale, y, filter }}
       className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-transparent px-6 z-40 overflow-hidden pointer-events-none"
     >
-      {/* Dynamic Telemetry Cyber Grid Backdrop */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(circle_at_center,black_70%,transparent_100%)] opacity-70 z-0 pointer-events-none" />
 
-      {/* Futuristic Concentric Status Rings */}
-      <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="w-[280px] h-[280px] rounded-full border border-white/[0.02] border-dashed flex items-center justify-center"
-        >
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            className="w-[200px] h-[200px] rounded-full border border-cyan-500/[0.04] flex items-center justify-center"
-          >
-            <div className="w-[120px] h-[120px] rounded-full border border-white/[0.01] shadow-[inset_0_0_20px_rgba(0,212,255,0.02)]" />
-          </motion.div>
-        </motion.div>
-      </div>
 
       {/* Cyber Corner Metadata Annotations */}
       <div className="absolute inset-x-6 top-16 flex justify-between font-mono text-[7px] text-white/30 tracking-[0.2em] z-10">

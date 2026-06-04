@@ -6,7 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, Globe, ArrowUpRight } from "lucide-react";
-import { submitDemoRequest } from "@/lib/supabase";
+
 
 interface SceneProps {
   scrollProgress: MotionValue<number>;
@@ -41,14 +41,23 @@ export function FinalCTA({ scrollProgress }: SceneProps) {
   const onSubmit = async (data: FormValues) => {
     setStatus("idle");
     try {
-      await submitDemoRequest({
-        doctor_name: data.name,
-        hospital_name: data.hospital,
-        email: data.email,
-        department: data.role,
-        hospital_size: "Not specified",
-        message: "Cinematic Mobile Reservation",
+      const response = await fetch("/api/reserve", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          doctor_name: data.name,
+          hospital_name: data.hospital,
+          email: data.email,
+          department: data.role,
+          hospital_size: "Not specified",
+          message: "Cinematic Mobile Reservation",
+        }),
       });
+      if (!response.ok) {
+        throw new Error("Failed to reserve early access");
+      }
       setStatus("success");
       setStatusMessage("Early access reservation confirmed. Our clinical integration team will contact you shortly.");
       reset();
@@ -211,7 +220,14 @@ export function FinalCTA({ scrollProgress }: SceneProps) {
           <div className="flex gap-2.5">
             <a href="https://github.com/safevitalsxr" className="hover:text-white transition-colors">GITHUB</a>
             <span>•</span>
-            <a href="#" className="hover:text-white transition-colors">LINKEDIN</a>
+            <a
+              href="https://www.instagram.com/safevitals_xr?igsh=MWtvcmgzbmJuemYzag=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              INSTAGRAM
+            </a>
           </div>
         </div>
       </div>

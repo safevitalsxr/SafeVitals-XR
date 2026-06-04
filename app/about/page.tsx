@@ -23,31 +23,41 @@ const TEAM = [
     name: "Karuna Rahul Mamidi",
     role: "Founder & CEO",
     image: "/founder.jpg",
-    bio: "IoT, Embedded Systems, and 3D simulation researcher leading SafeVitals XR.",
+    bio: "IoT and XR researcher building the future of immersive patient monitoring.",
     linkedin: "https://linkedin.com/in/karuna-rahul-mamidi",
     github: "https://github.com/Karunarahul",
     portfolio: "https://karunarahul.netlify.app/",
-    skills: ["IoT Systems", "Embedded Systems", "UE5", "Blender 3D", "5G/6G Research"],
+    skills: ["IoT Systems", "Embedded Systems", "XR/VR", "Product Strategy"],
   },
   {
     name: "Rakesh Yarabolu",
     role: "Co-Founder",
     image: "/co-founder.jpg",
-    bio: "Co-founder leading clinical operations, strategy, and hospital deployments.",
+    bio: "Operations lead driving clinical integrations, workflow design, and strategy.",
     linkedin: "",
     github: "",
     portfolio: "",
-    skills: ["Operations", "Healthcare IT", "Hospital Strategy", "Business Dev"],
+    skills: ["Operations", "Clinical Workflows", "Strategy", "Coordination"],
   },
   {
     name: "Chillagundla Balaram",
-    role: "Tech Head",
+    role: "Tech Head & Hardware Eng",
     image: "/Technical-lead.jpg",
-    bio: "Full-stack developer and network engineer managing the telemetry infrastructure.",
+    bio: "Full-stack developer and hardware architect building our real-time telemetry systems.",
     linkedin: "https://linkedin.com/in/chbalarm",
     github: "https://github.com/balaram753",
     portfolio: "https://balaram.me",
-    skills: ["Web Dev", "Python/JS", "Networking", "Linux", "Claude Code"],
+    skills: ["Hardware Architecture", "Full-Stack Dev", "Telemetry", "Linux"],
+  },
+  {
+    name: "Kalyani Akshita",
+    role: "Operations Lead & Bio Med Eng",
+    image: "/image.png",
+    bio: "Biomedical engineer translating complex biomarker data into clinical insights.",
+    linkedin: "https://www.linkedin.com/in/akshita-kalyani-487203288",
+    github: "",
+    portfolio: "",
+    skills: ["Biomedical Eng", "Bioinformatics", "Data Analysis", "Quality Control"],
   },
 ];
 
@@ -106,7 +116,7 @@ export default function AboutPage() {
       <section className="section-shell py-20 border-t border-white/10">
         <p className="eyebrow mb-4">Meet the Team</p>
         <h2 className="text-3xl font-semibold md:text-5xl mb-12">The minds behind the technology.</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {TEAM.map((member) => (
             <div 
               key={member.name} 

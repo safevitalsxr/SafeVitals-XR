@@ -34,9 +34,15 @@ export default function Home() {
       <div className="relative">
         {mounted ? (
           <>
-            <HeroSequence />
-            <BridgeScrollFullscreen />
-            <PlatformStorytelling />
+            <div>
+              <HeroSequence />
+            </div>
+            <div>
+              <BridgeScrollFullscreen />
+            </div>
+            <div>
+              <PlatformStorytelling />
+            </div>
           </>
         ) : (
           <div className="h-screen bg-black w-full" />

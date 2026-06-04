@@ -74,34 +74,7 @@ export function PatientScene({ scrollProgress }: SceneProps) {
           </div>
         </motion.div>
 
-        {/* Silhouette Vector */}
-        <motion.svg
-          style={{ opacity: bodyOpacity }}
-          className="w-full h-full max-h-[300px] max-w-[280px] z-10"
-          viewBox="0 0 200 200"
-          fill="none"
-        >
-          <path
-            d="M 60 180 C 60 180, 75 140, 75 110 L 80 50 C 80 25, 120 25, 120 50 L 125 110 C 125 140, 140 180, 140 180"
-            stroke="rgba(0, 212, 255, 0.4)"
-            strokeWidth="1.5"
-            fill="none"
-          />
-          <path d="M 83 95 Q 100 90 117 95" stroke="rgba(0, 212, 255, 0.2)" strokeWidth="1" />
-          <path d="M 80 110 Q 100 105 120 110" stroke="rgba(0, 212, 255, 0.2)" strokeWidth="1" />
-          <path d="M 78 125 Q 100 120 122 125" stroke="rgba(0, 212, 255, 0.2)" strokeWidth="1" />
-
-          {/* Heart beating dot */}
-          <motion.circle
-            cx="93"
-            cy="95"
-            r="4.5"
-            fill="#00D4FF"
-            animate={{ scale: [1, 1.4, 1.05, 1.5, 1] }}
-            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-            className="drop-shadow-[0_0_8px_rgba(0,212,255,0.9)]"
-          />
-        </motion.svg>
+        {/* Silhouette Vector is now rendered in high fidelity via MobileHeroCanvas */}
 
         {/* Floating Vitals Panels */}
         <motion.div style={{ opacity: vitalsOpacity }} className="absolute inset-0 w-full h-full z-20">

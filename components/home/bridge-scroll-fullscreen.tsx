@@ -148,7 +148,7 @@ export function BridgeScrollFullscreen() {
   }, [imagesLoaded]);
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full bg-black overflow-hidden pointer-events-auto border-b border-white/5">
+    <section id="bridge" ref={containerRef} className="relative h-screen w-full bg-black overflow-hidden pointer-events-auto border-b border-white/5">
       {!imagesLoaded && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black">
           <div className="w-8 h-8 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>

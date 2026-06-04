@@ -103,7 +103,8 @@ export function HeroSequence() {
         const sHeight = img.height * 0.82; // Crop 16% from the bottom to hide watermark
 
         const baseScale = Math.max(w / sWidth, h / sHeight);
-        const scale = (isMobile ? baseScale * 1.08 : baseScale * 1.05) * zoom;
+        // Decrease size of the human model on desktop (from 1.05 to 0.72)
+        const scale = (isMobile ? baseScale * 1.08 : baseScale * 0.72) * zoom;
 
         const drawWidth = sWidth * scale;
         const drawHeight = sHeight * scale;
@@ -113,9 +114,10 @@ export function HeroSequence() {
         const offsetY = ((h - drawHeight) / 2) + zoomBiasY;
 
         const actualShift = isMobile ? xShift * 0.5 : xShift;
-        let offsetX = baseOffsetX + (w * actualShift);
-
-        offsetX = Math.min(0, Math.max(w - drawWidth, offsetX));
+        // Position the model on the right side of the screen on desktop
+        const offsetX = isMobile 
+          ? Math.min(0, Math.max(w - drawWidth, baseOffsetX + (w * actualShift)))
+          : (w * 0.70 - (drawWidth / 2));
 
         context.drawImage(
           img, 
@@ -250,7 +252,7 @@ export function HeroSequence() {
       {/* Target Dot on Chest */}
       <div 
         ref={targetDotRef} 
-        className="absolute left-[45%] top-[52%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center md:flex hidden z-10 pointer-events-none opacity-0"
+        className="absolute left-[68%] top-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center md:flex hidden z-10 pointer-events-none opacity-0"
       >
         <span className="absolute inline-flex h-6 w-6 rounded-full bg-cyan-400 opacity-75 animate-ping"></span>
         <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500 animate-pulse"></span>
@@ -263,8 +265,8 @@ export function HeroSequence() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <line 
-          x1="45%" y1="52%" 
-          x2="60%" y2="28%" 
+          x1="68%" y1="50%" 
+          x2="52%" y2="32%" 
           stroke="#22d3ee" 
           strokeWidth="1.5" 
           strokeDasharray="4 4" 
@@ -275,7 +277,7 @@ export function HeroSequence() {
       {/* Vitals HUD Card (floating HUD connecting to the heart, morphs to large backdrop telemetry) */}
       <div 
         ref={vitalsCardRef} 
-        className="absolute md:left-[60%] md:top-[28%] left-1/2 top-[18%] -translate-x-1/2 md:translate-x-0 w-[90%] max-w-[340px] bg-slate-950/60 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-5 shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col gap-3 animate-hud-pulse z-10 pointer-events-none opacity-0"
+        className="absolute md:left-[42%] md:top-[25%] left-1/2 top-[18%] -translate-x-1/2 md:translate-x-0 w-[90%] max-w-[340px] bg-slate-950/60 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-5 shadow-[0_0_30px_rgba(6,182,212,0.15)] flex flex-col gap-3 animate-hud-pulse z-10 pointer-events-none opacity-0"
       >
         <div className="flex items-center justify-between border-b border-white/10 pb-2">
           <span className="text-[10px] font-mono tracking-widest text-cyan-400 uppercase font-semibold flex items-center gap-1.5">
@@ -370,10 +372,10 @@ export function HeroSequence() {
         </div>
       </div>
 
-      {/* Frames 21-80: Right Aligned - Heart/Chest Focus, Vitals Ambient Background behind text */}
-      <div ref={text2Ref} className="absolute inset-x-0 md:inset-x-auto md:right-24 top-[35%] z-20 flex flex-col items-end text-right px-6 opacity-0 translate-x-10 pointer-events-none drop-shadow-2xl">
+      {/* Frames 21-80: Left Aligned (clear of the right-side human twin) */}
+      <div ref={text2Ref} className="absolute inset-x-0 md:inset-x-auto md:left-24 top-[35%] z-20 flex flex-col items-start text-left px-6 opacity-0 -translate-x-10 pointer-events-none drop-shadow-2xl">
         <div ref={glowRef} className="absolute -inset-20 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none -z-10 animate-heart-pulse" />
-        <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-tight text-white mb-6 font-semibold bg-clip-text text-transparent bg-gradient-to-l from-white to-white/70 select-none">
+        <h2 className="font-heading text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-tight text-white mb-6 font-semibold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 select-none">
           Beyond<br />Traditional<br />Monitoring.
         </h2>
         <p className="font-sans text-lg md:text-xl text-white/60 max-w-xl font-light leading-relaxed select-none">
@@ -411,9 +413,9 @@ export function HeroSequence() {
         </div>
       </div>
 
-      {/* Frames 81-100: Right Aligned - Final CTA */}
-      <div ref={text5Ref} className="absolute inset-x-0 md:inset-x-auto md:right-24 top-[35%] z-20 flex flex-col items-end text-right px-6 opacity-0 translate-x-10 drop-shadow-2xl">
-        <div className="space-y-6 max-w-3xl flex flex-col items-end">
+      {/* Frames 81-100: Left Aligned (clear of the right-side human twin) */}
+      <div ref={text5Ref} className="absolute inset-x-0 md:inset-x-auto md:left-24 top-[35%] z-20 flex flex-col items-start text-left px-6 opacity-0 -translate-x-10 drop-shadow-2xl">
+        <div className="space-y-6 max-w-3xl flex flex-col items-start">
           <h2 className="font-heading text-6xl md:text-8xl lg:text-9xl tracking-tighter leading-none text-white mb-8 font-semibold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40 select-none">
             The Future<br />Is Here.
           </h2>
