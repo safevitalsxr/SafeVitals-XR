@@ -35,7 +35,7 @@ const TEAM = [
   },
   {
     name: "Kalyani Akshita",
-    role: "Operations Lead & Bio Med Eng",
+    role: "Bio Med Eng",
     image: "/image.png",
     bio: "Biomedical engineer translating complex biomarker data into clinical insights.",
     linkedin: "https://www.linkedin.com/in/akshita-kalyani-487203288",
