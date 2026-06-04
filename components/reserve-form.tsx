@@ -44,11 +44,13 @@ export function ReserveForm({ compact = false }: { compact?: boolean }) {
         body: JSON.stringify(values),
       });
       if (!response.ok) {
-        throw new Error("Failed to reserve demo");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to reserve demo");
       }
       setStatus("success");
       reset();
-    } catch {
+    } catch (err: any) {
+      console.error("Submission error:", err);
       setStatus("error");
     }
   };
