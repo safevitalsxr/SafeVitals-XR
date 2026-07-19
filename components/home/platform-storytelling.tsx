@@ -694,7 +694,7 @@ export function PlatformStorytelling() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center pointer-events-auto">
               <Link
-                href="/platform"
+                href="/dashboard"
                 className="rounded-full bg-white px-7 md:px-10 py-4 md:py-5 font-semibold text-black transition-all hover:bg-gray-100 hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.25)] flex items-center justify-center gap-2 text-sm md:text-base"
               >
                 Explore Platform

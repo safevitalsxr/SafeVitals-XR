@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://safevitals.in/platform",
+      url: "https://safevitals.in/dashboard",
       lastModified: new Date(),
     },
     {

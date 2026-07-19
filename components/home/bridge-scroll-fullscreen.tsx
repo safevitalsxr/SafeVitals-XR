@@ -34,22 +34,46 @@ export function BridgeScrollFullscreen() {
       return;
     }
     
-    let loadedCount = 0;
     const images: HTMLImageElement[] = [];
-    
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
       const img = new Image();
       img.crossOrigin = "anonymous";
-      img.src = getFramePath(i);
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === TOTAL_FRAMES) {
-          imagesRef.current = images;
-          setImagesLoaded(true);
-        }
-      };
       images.push(img);
     }
+    imagesRef.current = images;
+
+    // Load first frame immediately to unblock the page
+    const firstImg = images[0];
+    firstImg.src = getFramePath(1);
+    firstImg.onload = () => {
+      setImagesLoaded(true);
+      loadRemaining();
+    };
+    firstImg.onerror = () => {
+      setImagesLoaded(true);
+      loadRemaining();
+    };
+
+    const loadRemaining = async () => {
+      const chunkSize = 5;
+      for (let i = 2; i <= TOTAL_FRAMES; i += chunkSize) {
+        const promises = [];
+        for (let j = i; j < i + chunkSize && j <= TOTAL_FRAMES; j++) {
+          promises.push(
+            new Promise<void>((resolve) => {
+              const img = images[j - 1];
+              img.src = getFramePath(j);
+              img.onload = () => resolve();
+              img.onerror = () => {
+                console.warn(`Failed to load frame ${j}`);
+                resolve();
+              };
+            })
+          );
+        }
+        await Promise.all(promises);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -74,9 +98,29 @@ export function BridgeScrollFullscreen() {
       context.clearRect(0, 0, w, h);
       
       const frameIndex = Math.max(1, Math.min(TOTAL_FRAMES, Math.round(f)));
-      const img = imagesRef.current[frameIndex - 1];
+      let img = imagesRef.current[frameIndex - 1];
+
+      // Fallback search: find the closest loaded frame to frameIndex
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        // Search backwards
+        for (let i = frameIndex - 1; i >= 0; i--) {
+          if (imagesRef.current[i] && imagesRef.current[i].complete && imagesRef.current[i].naturalWidth > 0) {
+            img = imagesRef.current[i];
+            break;
+          }
+        }
+        // If still not found, search forwards
+        if (!img || !img.complete || img.naturalWidth === 0) {
+          for (let i = frameIndex; i < TOTAL_FRAMES; i++) {
+            if (imagesRef.current[i] && imagesRef.current[i].complete && imagesRef.current[i].naturalWidth > 0) {
+              img = imagesRef.current[i];
+              break;
+            }
+          }
+        }
+      }
       
-      if (img && img.complete) {
+      if (img && img.complete && img.naturalWidth > 0) {
         // Crop the source image to hide the Veo watermark at the bottom edge
         const sx = img.width * 0.02; // Crop 2% from left
         const sy = img.height * 0.02; // Crop 2% from top

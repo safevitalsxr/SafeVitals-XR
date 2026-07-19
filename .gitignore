@@ -6,6 +6,8 @@ dist
 dev-server.log
 dev-server.err.log
 *.zip
+plan-cloudflare-cdn.md
+work-update.md
 
 # Cloudflare CDN Migrated Assets
 /public/hero-xr

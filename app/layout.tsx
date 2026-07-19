@@ -3,7 +3,6 @@ import { Inter, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Navigation } from "@/components/navigation";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | SafeVitals XR",
   },
   description:
-    "SafeVitals XR transforms patient monitoring into immersive healthcare intelligence through SafeVitals Bridge, cloud infrastructure, medical dashboards, mobile applications, and XR visualization.",
+    "SafeVitals XR transforms patient monitoring into immersive healthcare intelligence through SafeVitals Bridge, cloud infrastructure, medical dashboards, and XR visualization.",
   keywords: [
     "SafeVitals",
     "SafeVitals XR",
@@ -52,8 +51,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SafeVitals XR",
+    title: "SafeVitals Technologies Pvt Ltd | SafeVitals XR",
     description: "Real-Time Healthcare Intelligence in XR",
+    site: "@SafeVitalsXR",
+    creator: "@SafeVitalsXR",
   },
   robots: {
     index: true,
@@ -75,9 +76,13 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "SafeVitals XR",
+  name: "SafeVitals Technologies Pvt Ltd",
   url: "https://safevitals.in",
   description: "Real-Time Healthcare Intelligence in XR",
+  sameAs: [
+    "https://x.com/SafeVitalsXR",
+    "https://www.instagram.com/safevitals_xr"
+  ],
 };
 
 export default async function RootLayout({
@@ -85,11 +90,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const host = headersList.get("host") || "";
-  const isMobileHeader = headersList.get("x-is-mobile") === "true";
-  const isMobile = host.startsWith("mobile.") || isMobileHeader;
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -101,7 +101,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased bg-background text-text font-sans selection:bg-accent/30`} suppressHydrationWarning>
-        {!isMobile && <SmoothScroll />}
+        <SmoothScroll />
         <Navigation />
         {children}
         <Footer />

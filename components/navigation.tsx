@@ -18,6 +18,32 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Server-side check
+  const isPortalPath =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/patient") ||
+    pathname.startsWith("/doctor") ||
+    pathname.startsWith("/staff");
+
+  // Client-side check including subdomain
+  let isSubdomain = false;
+  if (mounted && typeof window !== "undefined") {
+    const hostname = window.location.hostname;
+    const parts = hostname.split(".");
+    const isLocal = hostname.includes("localhost") || hostname.includes("127.0.0.1");
+
+    if (isLocal) {
+      isSubdomain = parts.length > 1 && parts[0] !== "localhost" && parts[0] !== "127";
+    } else {
+      isSubdomain = parts.length >= 3 && parts[0] !== "www";
+    }
+  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,7 +54,7 @@ export function Navigation() {
       if (pathname === "/") {
         // The hero ScrollTrigger is set to end at +=400% 
         const heroEnd = window.innerHeight * 3.9;
-        
+
         // Hide if we have scrolled past the initial top bar but have not finished the hero
         if (currentScrollY > 50 && currentScrollY < heroEnd) {
           setHidden(true);
@@ -39,27 +65,29 @@ export function Navigation() {
         setHidden(false);
       }
     };
-    
+
     // Initial check
     onScroll();
-    
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
+  if (isPortalPath || isSubdomain) {
+    return null;
+  }
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
-      } ${
-        scrolled 
-          ? "border-b border-border bg-background/60 backdrop-blur-md" 
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
+        } ${scrolled
+          ? "border-b border-border bg-background/60 backdrop-blur-md"
           : "bg-transparent border-b border-transparent"
-      }`}
+        }`}
     >
       <nav className="section-shell flex h-24 items-center justify-between">
-        <Link href="/" className="flex items-center gap-3" aria-label="SafeVitals XR home">
-          <span className="font-heading text-lg font-medium tracking-wide text-text">SafeVitals XR</span>
+        <Link href="/" className="flex items-center" aria-label="SafeVitals XR home">
+          <img src="/Logos/Horizontal_White_V2.png" alt="SafeVitals Logo" className="h-11 md:h-14 w-auto object-contain" />
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">

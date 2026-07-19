@@ -68,7 +68,7 @@ export function HeroStory() {
               <Link href="/reserve" className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-[#00D4FF]">
                 Reserve Demo <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </Link>
-              <Link href="/platform" className="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#00D4FF]/50 hover:bg-[#00D4FF]/10">
+              <Link href="/dashboard" className="rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#00D4FF]/50 hover:bg-[#00D4FF]/10">
                 Watch Platform
               </Link>
             </div>
