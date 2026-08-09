@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Briefcase, Mail, ArrowRight, CheckCircle2, AlertCircle, Sparkles, Send } from "lucide-react";
+import { Briefcase, Mail, Sparkles, Send } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -64,7 +63,7 @@ export default function CareersPage() {
             Help Us Shape the Future of Spatial Healthcare
           </h1>
           <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed max-w-3xl">
-            At SafeVitals XR, we are replacing fragmented hospital display monitors with real-time, spatial clinical intelligence. While we don't have immediate job openings, we are always looking to connect with visionary talent for upcoming engineering cohorts.
+            At SafeVitals XR, we are replacing fragmented hospital display monitors with real-time, spatial clinical intelligence. While we don&apos;t have immediate job openings, we are always looking to connect with visionary talent for upcoming engineering cohorts.
           </p>
         </div>
       </section>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Linkedin, Github, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",

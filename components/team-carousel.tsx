@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Linkedin, Github, Globe, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { TEAM, TeamMember } from "@/lib/team";
 
 export function TeamCarousel() {
@@ -33,9 +33,9 @@ export function TeamCarousel() {
     setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
+  }, [maxIndex]);
 
   // Autoplay functionality
   useEffect(() => {
@@ -44,7 +44,7 @@ export function TeamCarousel() {
       nextSlide();
     }, 5000);
     return () => clearInterval(interval);
-  }, [currentIndex, maxIndex, isPaused]);
+  }, [isPaused, nextSlide]);
 
   return (
     <div 
