@@ -18,48 +18,7 @@ export const metadata: Metadata = {
 
 const roadmap = ["Hospital Integration", "Cloud Diagnostics", "AI Prediction Models", "Global Accessibility"];
 
-const TEAM = [
-  {
-    name: "Karuna Rahul Mamidi",
-    role: "Founder & CEO",
-    image: "/founder.jpg",
-    bio: "IoT and XR researcher building the future of immersive patient monitoring.",
-    linkedin: "https://linkedin.com/in/karuna-rahul-mamidi",
-    github: "https://github.com/Karunarahul",
-    portfolio: "https://karunarahul.netlify.app/",
-    skills: ["IoT Systems", "Embedded Systems", "XR/VR", "Product Strategy"],
-  },
-  {
-    name: "Rakesh Yarabolu",
-    role: "Co-Founder",
-    image: "/co-founder.jpg",
-    bio: "Operations lead driving clinical integrations, workflow design, and strategy.",
-    linkedin: "",
-    github: "",
-    portfolio: "",
-    skills: ["Operations", "Clinical Workflows", "Strategy", "Coordination"],
-  },
-  {
-    name: "Chillagundla Balaram",
-    role: "Tech Head & Hardware Eng",
-    image: "/Technical-lead.jpg",
-    bio: "Full-stack developer and hardware architect building our real-time telemetry systems.",
-    linkedin: "https://linkedin.com/in/chbalarm",
-    github: "https://github.com/balaram753",
-    portfolio: "https://balaram.me",
-    skills: ["Hardware Architecture", "Full-Stack Dev", "Telemetry", "Linux"],
-  },
-  {
-    name: "Kalyani Akshita",
-    role: "Operations Lead & Bio Med Eng",
-    image: "/image.png",
-    bio: "Biomedical engineer translating complex biomarker data into clinical insights.",
-    linkedin: "https://www.linkedin.com/in/akshita-kalyani-487203288",
-    github: "",
-    portfolio: "",
-    skills: ["Biomedical Eng", "Bioinformatics", "Data Analysis", "Quality Control"],
-  },
-];
+import { TeamCarousel } from "@/components/team-carousel";
 
 export default function AboutPage() {
   return (
@@ -116,85 +75,7 @@ export default function AboutPage() {
       <section className="section-shell py-20 border-t border-white/10">
         <p className="eyebrow mb-4">Meet the Team</p>
         <h2 className="text-3xl font-semibold md:text-5xl mb-12">The minds behind the technology.</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {TEAM.map((member) => (
-            <div 
-              key={member.name} 
-              className="relative group overflow-hidden rounded-2xl bg-white/[0.01] border border-white/[0.04] p-6 hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_50px_rgba(6,182,212,0.08)] hover:scale-[1.02] flex flex-col justify-between"
-            >
-              <div>
-                {/* Image container with 4:5 aspect ratio */}
-                <div className="relative overflow-hidden rounded-xl aspect-[4/5] mb-5 bg-white/5">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="object-cover w-full h-full filter grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-                  />
-                  {/* Shadow overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
-                </div>
-                
-                <div className="flex flex-col gap-2.5 mb-3">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-cyan bg-cyan/10 px-2.5 py-1 rounded-full w-fit font-semibold whitespace-nowrap">
-                    {member.role}
-                  </span>
-                  {/* Social Links */}
-                  <div className="flex items-center gap-2.5 text-white/40">
-                    {member.linkedin && (
-                      <a 
-                        href={member.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="hover:text-cyan transition-colors"
-                      >
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                    )}
-                    {member.github && (
-                      <a 
-                        href={member.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="hover:text-cyan transition-colors"
-                      >
-                        <Github className="w-4 h-4" />
-                      </a>
-                    )}
-                    {member.portfolio && (
-                      <a 
-                        href={member.portfolio} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="hover:text-cyan transition-colors"
-                      >
-                        <Globe className="w-4 h-4" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-                
-                <h4 className="text-xl font-bold text-white mb-2 tracking-tight">
-                  {member.name}
-                </h4>
-                <p className="text-[0.925rem] text-muted leading-relaxed mb-4">
-                  {member.bio}
-                </p>
-              </div>
-              
-              {/* Skills tags */}
-              <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/[0.04]">
-                {member.skills.map((skill) => (
-                  <span 
-                    key={skill} 
-                    className="text-[10px] font-mono bg-white/[0.02] border border-white/[0.06] text-white/50 px-2 py-0.5 rounded"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <TeamCarousel />
       </section>
     </main>
   );

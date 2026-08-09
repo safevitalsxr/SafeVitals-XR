@@ -413,6 +413,15 @@ export function HeroSequence() {
           <p className="font-sans text-lg md:text-xl text-white/60 max-w-xl font-light select-none">
             Connect patient telemetry to the spatial computing network instantly. Real-time medical-grade rendering.
           </p>
+          <div className="pt-2">
+            <Link
+              href="/careers"
+              className="inline-flex items-center gap-2 text-xs font-mono px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all cursor-pointer"
+            >
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span>Careers — We&apos;re Hiring (0 Open Roles)</span>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -470,6 +479,9 @@ export function HeroSequence() {
             <Link href="/dashboard" className="rounded-full bg-white px-10 py-5 font-semibold text-black transition-all hover:bg-gray-100 hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.3)] flex items-center justify-center gap-3">
               Explore Platform
               <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            </Link>
+            <Link href="/careers" className="rounded-full bg-white/5 border border-white/20 px-8 py-5 font-semibold text-white transition-all hover:bg-white/10 hover:border-cyan-400/50 flex items-center justify-center gap-2">
+              View Careers
             </Link>
           </div>
         </div>
