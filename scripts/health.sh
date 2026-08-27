@@ -1,5 +1,7 @@
 #!/bin/bash
 
-sleep 5
+sleep 10
 
-curl -f http://localhost:3000
+curl -f http://127.0.0.1:3000/ > /dev/null
+
+exit $?
