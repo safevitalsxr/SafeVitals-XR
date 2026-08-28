@@ -4,15 +4,22 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/SafeVitals-XR
-
-file_exists_behavior: OVERWRITE
+    overwrite: true
 
 hooks:
+  # Clean old files before copying new ones
+  BeforeInstall:
+    - location: scripts/clean_old_files.sh
+      timeout: 120
+      runas: root
+
+  #  Start or reload the application without downtime
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 120
       runas: root
 
+  #  Validate the service health
   ValidateService:
     - location: scripts/health.sh
       timeout: 60
