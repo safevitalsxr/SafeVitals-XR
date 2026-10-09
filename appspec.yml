@@ -13,6 +13,11 @@ hooks:
       timeout: 120
       runas: root
 
+  AfterInstall:                          # ← ADD THIS BLOCK ONLY
+    - location: scripts/install.sh
+      timeout: 300
+      runas: root
+
   ApplicationStart:
     - location: scripts/start.sh
       timeout: 120
